@@ -1,0 +1,74 @@
+span.nav-avatar {
+	font-family: "Red Signal";
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+span.chat-avatar {
+	font-family: "Red Signal";
+	font-size: 2.5em;
+	line-height: 1.3em;
+}
+
+.dashboard-header > nav {
+	background-color: #151817;
+}
+
+.dashboard-header .navbar {
+	border-bottom: 1px solid #353844;
+}
+
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus, .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link.active 
+{
+	background-color: #353844;
+}
+
+.navbar-right-top .nav-item {
+	border-right: 1px solid #353844;
+}
+
+.dashboard-wrapper {
+	top: 8px;
+}
+
+.border-bottom {
+	border-bottom: 1px solid #353844!important;
+}
+
+.btn-outline-light {
+	border-color: #353844;
+}
+
+.form-control, textarea.form-control {
+	background-color: lightgrey;
+}
+
+.dashboard-main-wrapper .content-container>.chat-module .chat-item:not(:last-child) {
+	border-bottom: 1px solid #353844;
+}
+
+div#custom-search input.form-control {
+	background-color: #151817;
+	color: white;
+	border-color: #353844;
+}
+
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link {
+	color: white;
+}
+
+.sidebar-dark .nav-divider {
+	color: white;
+}
+
+.sidebar-dark.nav-left-sidebar .nav-link i {
+	color: white;
+}
+
+.btn-outline-light {
+	color: white;
+}
+
+.navbar-right-top .nav-item .nav-link {
+	color: white;
+}

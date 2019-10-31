@@ -1,0 +1,45 @@
+body {
+	background-color: #151817;
+}
+
+.sidebar-dark {
+	background-color: #151817;
+}
+
+.dashboard-wrapper .main-container {
+	background-color: #151817;
+}
+
+.chat-module .chat-module-bottom {
+	border-top: none;
+	background-color: white;
+	padding-right: 1em;
+}
+
+.chat-module {
+	padding: 1em;
+	padding-right: 0;
+	background-color: white;
+}
+
+.chat-module-top form {
+	padding-right: 1em;
+}
+
+.chat-module .chat-module-body {
+	color: #151817;
+}
+
+.dashboard-main-wrapper .content-container>.chat-module {
+	padding-right: 0;
+	margin-right: 1em;
+}
+
+.chat-module .chat-module-body .chat-item {
+	margin-right: 2em;
+}
+
+.chat-item-author {
+	color: #151817;
+	font-size: 2em;
+}
