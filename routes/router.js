@@ -42,6 +42,10 @@ router.get("/chat", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/chat.html'));
 });
 
+router.get("/pubchat", (req, res, next) => {
+  res.sendFile(path.join(__basedir + '/public/pages/pubchat.html'));
+});
+
 router.get("/approve", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/approve.html'));
 });
@@ -73,6 +77,7 @@ router.post("/auth/login", authController.login);
 router.get("/auth/logout", authController.logout);
 router.get("/webhook", authController.webhook);
 router.get("/api/me", authController.getMe);
+router.get("/pubme", authController.getPub);
 router.get('/clr', authController.clear);
 
 module.exports = router;

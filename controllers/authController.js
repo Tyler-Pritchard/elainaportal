@@ -53,10 +53,39 @@ exports.login = (req, res) => {
   let username = req.body.username;
 
   var passwordHash = crypto
-    .createHash("md5")
-    .update(password)
-    .digest("hex");
+      .createHash("md5")
+      .update(password)
+      .digest("hex");
   User.findOne({ email: username, password: passwordHash }).then(
+      result => {
+        if (result != null) {
+          if (result.status == "deactive") {
+            res.status(401).send({ error: "You should pay first." });
+          }
+          var token = jwt.sign({ _id: result._id }, config.jwtSecret, {
+            expiresIn: 86400 // expires in 24 hours
+          });
+          res.send({ auth: true, token: token, role: result.role });
+        } else {
+          res.status(401).send({ error: "Incorrect Credentials" });
+        }
+      })
+      .catch(err => {
+        res.status(401).send({ error: err });
+      });
+};
+
+// login as public user
+exports.getPub = (req, res) => {
+//  let password = req.body.password;
+  //let username = "arieljgurian@gmail.com";
+  let username = "dogstarspacelab@gmail.com";
+
+//  var passwordHash = crypto
+//    .createHash("md5")
+//    .update(password)
+//    .digest("hex");
+  User.findOne({ email: username }).then(
     result => {
       if (result != null) {
         if (result.status == "deactive") {
@@ -65,6 +94,9 @@ exports.login = (req, res) => {
         var token = jwt.sign({ _id: result._id }, config.jwtSecret, {
           expiresIn: 86400 // expires in 24 hours
         });
+        console.log("pubToken");
+        console.log(token);
+
         res.send({ auth: true, token: token, role: result.role });
       } else {
         res.status(401).send({ error: "Incorrect Credentials" });
@@ -94,8 +126,8 @@ exports.getMe = (req, res) => {
   jwt.verify(token[1], config.jwtSecret, function(err, decoded) {
     if (err)
       return res
-        .status(500)
-        .send({ auth: false, message: "Failed to authenticate token." });
+          .status(500)
+          .send({ auth: false, message: "Failed to authenticate token." });
     User.findOne({ _id: decoded._id }).then(result => {
       if (result) {
         var data = {
@@ -106,11 +138,50 @@ exports.getMe = (req, res) => {
         res.status(200).send(data);
       }
     })
+        .catch(err => {
+          res.status(401).send({ error: err });
+        });
+  });
+};
+
+exports.getPubMe = (req, res) => {
+  //console.log("inPubMe");
+  //console.log("stillInPubMe");
+/*  var token = req.headers["authorization"];
+  token = token.split(" ");
+  if (!token[1])
+    //return res.status(401).send({ auth: false, message: "No token provided." });
+    token[1] = jwt.sign({ _id: "5da5faa9b3caf40017992c76" }, config.jwtSecret, {
+      expiresIn: 86400 // expires in 24 hours
+    });
+  //res.send({ auth: true, token: token, role: result.role });
+  console.log("token[1]");
+  console.log(token[1]);
+
+  jwt.verify(token[1], config.jwtSecret, function(err, decoded) {
+    if (err)
+      return res
+        .status(500)
+        .send({ auth: false, message: "Failed to authenticate token." });
+ */
+  //User.findOne({ userId: "5da5faa9b3caf40017992c76" }).then(result => {
+  User.findOne({ email: "arieljgurian@gmail.com" }).then(result => {
+      if (result) {
+        var data = {
+          userId: result["_id"],
+          username: result["username"],
+          role: result['role']
+        };
+        console.log("data:");
+        console.log(data);
+        res.status(200).send(data);
+      }
+    })
     .catch(err => {
       res.status(401).send({ error: err });
     });
-  });
-};
+
+}
 
 handleInvoiceCreated = (expired) => {
   console.log(expired['customer_email']);
