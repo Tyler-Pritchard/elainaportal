@@ -61,7 +61,7 @@ $(document).ready(function(){
                         htmlcontent += `<span class="chat-avatar">${contents[i].sender.charAt(0).toUpperCase()}</span>`;
                     }
                     else {
-                        htmlcontent += `<img class="img-rounded img-responsive" src="./assets/custom/images/Deeplaw_Fevicon.png" height="48">`;
+                        htmlcontent += `<img class="img-rounded img-responsive" src="./assets/custom/images/newElainaBlue2.png" height="48">`;
                     }
                         
                     htmlcontent += `
