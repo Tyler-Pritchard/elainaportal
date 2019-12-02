@@ -54,6 +54,10 @@ router.get("/unfinisheddocuments", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/unfinisheddocuments.html'));
 });
 
+router.get("/availabledocuments", (req, res, next) => {
+  res.sendFile(path.join(__basedir + '/public/pages/availabledocuments.html'));
+});
+
 router.get("/approveddocuments", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/attorneydocuments.html'));
 });
