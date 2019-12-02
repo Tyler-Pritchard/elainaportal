@@ -67,11 +67,11 @@ exports.fileUpload = async (req, res) => {
   });
 
   form.on('file', function (name, file){
-    console.log(file)
+    //console.log(file)
       // file.path = __dirname + '/../public/docs/' + file.name;
     fs.readFile(file.path, function (err, data) {
       var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
-      console.log(data);
+      //console.log(data);
       s3bucket.createBucket(function () {
         var params = {
             Key: file.name, //file.name doesn't exist as a property
@@ -96,6 +96,31 @@ exports.fileUpload = async (req, res) => {
 
 
 exports.getApprovedDocs = async (req, res) => {
+	let current = req.user.email;
+
+	var docs = await Doc.find({user: current});
+
+	var doclist = [];
+	if (docs) {
+		for (var i = docs.length - 1; i >= 0; i--) {
+			var doclinks = [];
+			for (var j = 0; j < docs[i].link.length; j++) {
+				var link = docs[i].link[j];
+				if (link['status'] == "Approved") {
+					var temp = {...link};
+					temp['user'] = docs[i].user;
+					temp['approver'] = docs[i].approver;
+					doclinks.push(temp);
+				}
+			}
+			doclist.push(...doclinks);
+		}
+	}
+
+	return res.json({ status: "success", data: doclist });
+};
+
+exports.getUnfinishedDocs = async (req, res) => {
   let current = req.user.email;
 
   var docs = await Doc.find({user: current});
