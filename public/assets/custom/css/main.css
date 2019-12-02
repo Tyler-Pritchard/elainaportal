@@ -32,11 +32,11 @@ span.chat-avatar {
 }
 
 .border-bottom {
-	border-bottom: 1px solid #353844!important;
+	border-bottom: 1px solid #0892d0!important; //#353844!important;
 }
 
 .btn-outline-light {
-	border-color: #353844;
+	border-color: #0892d0; //#353844;
 }
 
 .form-control, textarea.form-control {
@@ -50,7 +50,7 @@ span.chat-avatar {
 div#custom-search input.form-control {
 	background-color: #151817;
 	color: white;
-	border-color: #353844;
+	border-color: #0892d0;  //#353844;
 }
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link {
