@@ -50,9 +50,14 @@ router.get("/approve", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/approve.html'));
 });
 
-router.get("/documents", (req, res, next) => {
-  res.sendFile(path.join(__basedir + '/public/pages/documents.html'));
+router.get("/unfinisheddocuments", (req, res, next) => {
+  res.sendFile(path.join(__basedir + '/public/pages/unfinisheddocuments.html'));
 });
+
+router.get("/approveddocuments", (req, res, next) => {
+  res.sendFile(path.join(__basedir + '/public/pages/attorneydocuments.html'));
+});
+
 
 router.get("/terms", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/terms.html'));
