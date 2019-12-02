@@ -44,7 +44,7 @@ span.chat-avatar {
 }
 
 .dashboard-main-wrapper .content-container>.chat-module .chat-item:not(:last-child) {
-	border-bottom: 1px solid #353844;
+	border-bottom: 1px solid #0892d0; //#353844;
 }
 
 div#custom-search input.form-control {
