@@ -7,15 +7,6 @@ var formidable = require('formidable');
 var fs = require('fs');
 var emailSender = require('./emailSender.js');
 const AWS = require('aws-sdk');
-var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
-	secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
-	s3BucketEndpoint: 'https://storage.googleapis.com'
-});
-console.log('ApprovedDocs');
-console.log("Access Key:", AWS.config.credentials.accessKeyId);
-console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
-
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
@@ -109,6 +100,15 @@ exports.fileUpload = async (req, res) => {
 
 exports.getApprovedDocs = async (req, res) => {
 	let current = req.user.email;
+	var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+		s3BucketEndpoint: 'https://storage.googleapis.com'
+	});
+	console.log('ApprovedDocs');
+	console.log("Access Key:", AWS.config.credentials.accessKeyId);
+	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+
 
 	console.log('ApprovedDocs');
 	console.log("Access Key:", AWS.config.credentials.accessKeyId);
@@ -140,8 +140,17 @@ exports.getApprovedDocs = async (req, res) => {
 
 exports.getUnfinishedDocs = async (req, res) => {
   let current = req.user.email;
+	var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+		s3BucketEndpoint: 'https://storage.googleapis.com'
+	});
+	console.log('ApprovedDocs');
+	console.log("Access Key:", AWS.config.credentials.accessKeyId);
+	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
 
-  var docs = await Doc.find({user: current});
+
+	var docs = await Doc.find({user: current});
 
   var doclist = [];
   if (docs) {
@@ -167,8 +176,17 @@ exports.approveDoc = async (req, res) => {
   let current = req.user.email;
   let user = req.body.content.user;
   let docid= req.body.content.docid;
+	var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+		s3BucketEndpoint: 'https://storage.googleapis.com'
+	});
+	console.log('ApprovedDocs');
+	console.log("Access Key:", AWS.config.credentials.accessKeyId);
+	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
 
-  var docs = await Doc.findOne({approver: current, user: user});
+
+	var docs = await Doc.findOne({approver: current, user: user});
 
   let docname = "";
 
