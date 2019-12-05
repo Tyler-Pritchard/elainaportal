@@ -102,7 +102,7 @@ exports.fileUpload = async (req, res) => {
 
 exports.getApprovedDocs = async (req, res) => {
 	let current = req.user.email;
-	AWS.config.loadFromPath('../config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+	AWS.config.loadFromPath('/app/config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 		//secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
 		//s3BucketEndpoint: 'https://storage.googleapis.com'
 	//});
