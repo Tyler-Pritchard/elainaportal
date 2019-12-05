@@ -19,6 +19,8 @@ var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 exports.getDocsToApprove = async (req, res) => {
   let current = req.user.email;
 
+  console.log("Docs2Approve");
+
   var docs = await Doc.find({approver: current});
 
   var doclist = [];
@@ -102,6 +104,9 @@ exports.fileUpload = async (req, res) => {
 
 exports.getApprovedDocs = async (req, res) => {
 	let current = req.user.email;
+
+	console.log('ApprovedDocs');
+	console.log("Access Key:", AWS.config.credentials.accessKeyId);
 
 	var docs = await Doc.find({user: current});
 
