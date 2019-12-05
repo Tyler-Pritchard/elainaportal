@@ -121,18 +121,21 @@ exports.addChat = async function (req, res) {
     });
 
 
-  }
-
-  if (false) {
 
     data = data.replaceAll('d.employeeName', info['employeeName']);
-    console.log(data);
+    //console.log(data);
     data = data.replaceAll('d.requireMayRequire', info['requireMayRequire']);
     data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
     data = data.replaceAll('d.position', info['position']);
     var converted = htmlDocxJs.asBlob(data);
     var doclink = req.user.accessCode + '-Background Check Policy IL.docx';
-    var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
+    var ep = new AWS.Endpoint('https://storage.googleapis.com');
+    var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
+    console.log('s3bucket.endpoint.hostname');
+    console.log(s3bucket.endpoint.hostname);
+  }
+  if (false) {
+    //var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
     s3bucket.createBucket(function () {
       var params = {
           Key: req.user.accessCode + '-Background Check Policy IL.docx', //file.name doesn't exist as a property
