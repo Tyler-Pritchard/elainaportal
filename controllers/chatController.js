@@ -83,7 +83,7 @@ exports.addChat = async function (req, res) {
   }
   let resultText = await myDialogflow.chat(content, sessionPath);
 
-  if (resultText.includes('we’re done')) {
+  if (false) { //resultText.includes('we’re done')) {
     const fs = require('fs');
 
     // Select Approver
