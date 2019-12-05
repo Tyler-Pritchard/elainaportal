@@ -7,19 +7,7 @@ var formidable = require('formidable');
 var fs = require('fs');
 var emailSender = require('./emailSender.js');
 const AWS = require('aws-sdk');
-//AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
-
-AWS.config.getCredentials(function(err) {
-	if (err) console.log(err.stack); // credentials not loaded
-	else {
-		console.log('ApprovedDocs');
-
-		console.log("Access Key:", AWS.config.credentials.accessKeyId);
-		console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-		console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
-	}
-});
-
+AWS.config.loadFromPath('/app/config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
@@ -116,14 +104,26 @@ exports.fileUpload = async (req, res) => {
 exports.getApprovedDocs = async (req, res) => {
 	let current = req.user.email;
 	console.log("AWS.Endpoint.toString()");
-	AWS.config.loadFromPath('/app/config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+	//AWS.config.loadFromPath('/app/config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 		//secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
 		//s3BucketEndpoint: 'https://storage.googleapis.com'
 	//});
 
 //	console.log(AWS.Endpoint.toString());
-
+	AWS.config.getCredentials(function(err) {
+		if (err) console.log(err.stack); // credentials not loaded
+		else {
 			console.log('ApprovedDocs');
+
+			console.log("Access Key:", AWS.config.credentials.accessKeyId);
+			console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+		}
+	});
+
+
+
+	console.log('ApprovedDocs');
 			console.log("Access Key:", AWS.config.credentials.accessKeyId);
 			console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
 			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
