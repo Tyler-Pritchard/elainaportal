@@ -11,6 +11,11 @@ var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 	secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
 	s3BucketEndpoint: 'https://storage.googleapis.com'
 });
+console.log('ApprovedDocs');
+console.log("Access Key:", AWS.config.credentials.accessKeyId);
+console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
@@ -107,6 +112,9 @@ exports.getApprovedDocs = async (req, res) => {
 
 	console.log('ApprovedDocs');
 	console.log("Access Key:", AWS.config.credentials.accessKeyId);
+	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+
 
 	var docs = await Doc.find({user: current});
 
