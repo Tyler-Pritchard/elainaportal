@@ -73,8 +73,10 @@ exports.fileUpload = async (req, res) => {
     //console.log(file)
       // file.path = __dirname + '/../public/docs/' + file.name;
     fs.readFile(file.path, function (err, data) {
-      var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  }});
-      //console.log(data);
+		var ep = new AWS.Endpoint('https://storage.googleapis.com');
+      var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
+      console.log(s3bucket.service.endpoint.hostname);
+
       s3bucket.createBucket(function () {
         var params = {
             Key: file.name, //file.name doesn't exist as a property
@@ -100,14 +102,14 @@ exports.fileUpload = async (req, res) => {
 
 exports.getApprovedDocs = async (req, res) => {
 	let current = req.user.email;
-	var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
-		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
-		s3BucketEndpoint: 'https://storage.googleapis.com'
-	});
-	var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
-		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
-		s3BucketEndpoint: 'https://storage.googleapis.com'
-	});
+	AWS.config.loadFromPath('../config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+		//secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+		//s3BucketEndpoint: 'https://storage.googleapis.com'
+	//});
+
+	//console.log(AWS.Endpoint.toString());
+
+
 	AWS.config.getCredentials(function(err) {
 		if (err) console.log(err.stack); // credentials not loaded
 		else {
