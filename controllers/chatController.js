@@ -71,6 +71,9 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// Adds a new message to the chat log
+// checked if document was completed and needs to be approved
+// sends to approvers
 exports.addChat = async function (req, res) {
   let content = req.body.content;
   let sessionPath = null;
@@ -83,6 +86,7 @@ exports.addChat = async function (req, res) {
   }
   let resultText = await myDialogflow.chat(content, sessionPath);
 
+  // this is the que to wrap up document
   if (resultText.includes('we’re done')) {
     const fs = require('fs');
 
@@ -100,7 +104,9 @@ exports.addChat = async function (req, res) {
 
     var info = currentUser['Background_Check_Policy'];
 
-    await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
+    //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
+    console.log('<strong>There are documents from ' + req.toString() + '</strong>');
+    await emailSender.sendEmail('morrisc@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
 
     String.prototype.replaceAll = function (search, replacement) {
