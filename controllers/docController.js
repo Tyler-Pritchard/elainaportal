@@ -104,16 +104,25 @@ exports.getApprovedDocs = async (req, res) => {
 		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
 		s3BucketEndpoint: 'https://storage.googleapis.com'
 	});
-	console.log('ApprovedDocs');
-	console.log("Access Key:", AWS.config.credentials.accessKeyId);
-	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+	var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+		s3BucketEndpoint: 'https://storage.googleapis.com'
+	});
+	AWS.config.getCredentials(function(err) {
+		if (err) console.log(err.stack); // credentials not loaded
+		else {
+			console.log('ApprovedDocs');
 
+			console.log("Access Key:", AWS.config.credentials.accessKeyId);
+			console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+		}
+	});
 
-	console.log('ApprovedDocs');
-	console.log("Access Key:", AWS.config.credentials.accessKeyId);
-	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+			console.log('ApprovedDocs');
+			console.log("Access Key:", AWS.config.credentials.accessKeyId);
+			console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
 
 
 	var docs = await Doc.find({user: current});
@@ -144,11 +153,20 @@ exports.getUnfinishedDocs = async (req, res) => {
 		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
 		s3BucketEndpoint: 'https://storage.googleapis.com'
 	});
-	console.log('ApprovedDocs');
-	console.log("Access Key:", AWS.config.credentials.accessKeyId);
-	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+	var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+		s3BucketEndpoint: 'https://storage.googleapis.com'
+	});
+	AWS.config.getCredentials(function(err) {
+		if (err) console.log(err.stack); // credentials not loaded
+		else {
+			console.log('ApprovedDocs');
 
+			console.log("Access Key:", AWS.config.credentials.accessKeyId);
+			console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+		}
+	});
 
 	var docs = await Doc.find({user: current});
 
@@ -180,10 +198,15 @@ exports.approveDoc = async (req, res) => {
 		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
 		s3BucketEndpoint: 'https://storage.googleapis.com'
 	});
+	AWS.config.getCredentials(function(err) {
+		if (err) console.log(err.stack); // credentials not loaded
+		else console.log("Access Key:", AWS.config.credentials.accessKeyId);
 	console.log('ApprovedDocs');
 	console.log("Access Key:", AWS.config.credentials.accessKeyId);
 	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
 	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+	});
+
 
 
 	var docs = await Doc.findOne({approver: current, user: user});
