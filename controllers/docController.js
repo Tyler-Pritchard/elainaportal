@@ -76,7 +76,7 @@ exports.fileUpload = async (req, res) => {
     fs.readFile(file.path, function (err, data) {
 		var ep = new AWS.Endpoint('https://storage.googleapis.com');
       var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
-      console.log(s3bucket.service.endpoint.hostname);
+      console.log(s3bucket.endpoint.hostname);
 
       s3bucket.createBucket(function () {
         var params = {
