@@ -9,6 +9,18 @@ var emailSender = require('./emailSender.js');
 const AWS = require('aws-sdk');
 //AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 
+AWS.config.getCredentials(function(err) {
+	if (err) console.log(err.stack); // credentials not loaded
+	else {
+		console.log('ApprovedDocs');
+
+		console.log("Access Key:", AWS.config.credentials.accessKeyId);
+		console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+		console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+	}
+});
+
+
 /**
  * Send a query to the dialogflow agent, and return the query result.
  * @param {string} projectId The project to be used
@@ -109,19 +121,7 @@ exports.getApprovedDocs = async (req, res) => {
 		//s3BucketEndpoint: 'https://storage.googleapis.com'
 	//});
 
-	console.log(AWS.Endpoint.toString());
-
-
-	AWS.config.getCredentials(function(err) {
-		if (err) console.log(err.stack); // credentials not loaded
-		else {
-			console.log('ApprovedDocs');
-
-			console.log("Access Key:", AWS.config.credentials.accessKeyId);
-			console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
-		}
-	});
+//	console.log(AWS.Endpoint.toString());
 
 			console.log('ApprovedDocs');
 			console.log("Access Key:", AWS.config.credentials.accessKeyId);
