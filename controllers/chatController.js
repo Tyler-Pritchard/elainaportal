@@ -83,7 +83,7 @@ exports.addChat = async function (req, res) {
   }
   let resultText = await myDialogflow.chat(content, sessionPath);
 
-  if (false) { //resultText.includes('we’re done')) {
+  if (resultText.includes('we’re done')) {
     const fs = require('fs');
 
     // Select Approver
@@ -92,8 +92,7 @@ exports.addChat = async function (req, res) {
     if (!admins) {
       // handle errors
       console.log("there is no admin");
-    }
-    else {
+    } else {
       approver = admins[getRandomInt(0, admins.length - 1)];
     }
 
@@ -104,12 +103,27 @@ exports.addChat = async function (req, res) {
     await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
 
-    String.prototype.replaceAll = function(search, replacement) {
+    String.prototype.replaceAll = function (search, replacement) {
       var target = this;
       return target.replace(new RegExp(search, 'g'), replacement);
     };
     console.log(info);
     console.log("--------")
+    AWS.config.getCredentials(function(err) {
+      if (err) console.log(err.stack); // credentials not loaded
+      else {
+        console.log('ApprovedDocs');
+
+        console.log("Access Key:", AWS.config.credentials.accessKeyId);
+        console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+        //console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+      }
+    });
+
+
+  }
+
+  if (false) {
 
     data = data.replaceAll('d.employeeName', info['employeeName']);
     console.log(data);
