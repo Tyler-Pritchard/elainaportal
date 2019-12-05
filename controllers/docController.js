@@ -1,5 +1,5 @@
 require("dotenv").config();
-var config = require("../config");
+//var config = require("../config");
 var User = require('../models/user');
 var Chat = require('../models/chat');
 var Doc = require('../models/docapprove');
@@ -7,6 +7,11 @@ var formidable = require('formidable');
 var fs = require('fs');
 var emailSender = require('./emailSender.js');
 const AWS = require('aws-sdk');
+var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+	secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+	s3BucketEndpoint: 'https://storage.googleapis.com'
+});
+
 /**
  * Send a query to the dialogflow agent, and return the query result.
  * @param {string} projectId The project to be used
@@ -70,7 +75,7 @@ exports.fileUpload = async (req, res) => {
     //console.log(file)
       // file.path = __dirname + '/../public/docs/' + file.name;
     fs.readFile(file.path, function (err, data) {
-      var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
+      var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  }});
       //console.log(data);
       s3bucket.createBucket(function () {
         var params = {
