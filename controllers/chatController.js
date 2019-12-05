@@ -105,8 +105,8 @@ exports.addChat = async function (req, res) {
     var info = currentUser['Background_Check_Policy'];
 
     //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
-    console.log('<strong>There are documents from ' + req.toString() + '</strong>');
-    await emailSender.sendEmail('morrisc@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
+    console.log('<strong>There are documents from ' + req + '</strong>');
+    await emailSender.sendEmail('morrisc@gmail.com', 'morrisc@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
 
     String.prototype.replaceAll = function (search, replacement) {
