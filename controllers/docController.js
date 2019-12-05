@@ -129,8 +129,11 @@ exports.getApprovedDocs = async (req, res) => {
 			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
 
 	var ep = new AWS.Endpoint('https://storage.googleapis.com');
+	console.log("ep.hostname");
+	console.log(ep.hostname);
 	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
-	console.log(s3bucket.service.endpoint.hostname);
+	console.log("s3bucket.endpoint.hostname");
+	console.log(s3bucket.endpoint.hostname);
 
 	var docs = await Doc.find({user: current});
 
