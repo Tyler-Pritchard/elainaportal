@@ -7,7 +7,7 @@ var formidable = require('formidable');
 var fs = require('fs');
 var emailSender = require('./emailSender.js');
 const AWS = require('aws-sdk');
-AWS.config.loadFromPath('/app/config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
