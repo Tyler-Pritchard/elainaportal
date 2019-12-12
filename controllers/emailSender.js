@@ -2,6 +2,7 @@ require("dotenv").config();
 var config = require("../config");
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+console.log("sgMail.setApiKey"+process.env.SENDGRID_API_KEY);
 
 /**
  * Send a query to the dialogflow agent, and return the query result.
