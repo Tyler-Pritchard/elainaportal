@@ -6294,7 +6294,7 @@ Vertical Timeline - by CodyHouse.co
 
 .chat-body{overflow: hidden;}
 
-.chat-module {
+.pubchat-module,.chat-module {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -6302,7 +6302,7 @@ Vertical Timeline - by CodyHouse.co
     justify-content: space-between;
 
 }
-.chat-module {
+.pubchat-module,.chat-module {
     height: calc(100vh - 105px);
 }
 .dashboard-main-wrapper .content-container>.chat-module {
@@ -6314,7 +6314,7 @@ Vertical Timeline - by CodyHouse.co
     padding: 1.5rem;
 }
 
-.chat-module .chat-module-body {
+.pubchat-module,.chat-module .chat-module-body {
     width: 100%;
     position: absolute;
     top: 55px;
@@ -6329,7 +6329,7 @@ Vertical Timeline - by CodyHouse.co
     padding-right: 0;
 }
 
-.chat-module .chat-module-top {
+.pubchat-module,.chat-module .chat-module-top {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -6441,7 +6441,7 @@ Vertical Timeline - by CodyHouse.co
     margin-left: 0.75rem;
 }
 
-.chat-module .chat-module-bottom {
+.pubchat-module,.chat-module .chat-module-bottom {
     position: relative;
     padding-top: 1rem;
     border-top: 1px solid #E9EEF2;
