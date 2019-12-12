@@ -10,13 +10,13 @@ body {
 	background-color: #151817;
 }
 
-.chat-module .chat-module-bottom {
+.pubchat-module,chat-module .chat-module-bottom {
 	border-top: none;
 	background-color: white;
 	padding-right: 1em;
 }
 
-.chat-module {
+.pubchat-module,.chat-module {
 	padding: 1em;
 	padding-right: 0;
 	background-color: white;
@@ -30,7 +30,7 @@ body {
 	color: #151817;
 }
 
-.chat-module .pubchat-module-body {
+.pubchat-module .chat-module-body {
 	color: #151817;
 	height: 100%;
 }
@@ -40,7 +40,7 @@ body {
 	margin-right: 1em;
 }
 
-.chat-module .chat-module-body .chat-item {
+.pubchat-module,.chat-module .chat-module-body .chat-item {
 	margin-right: 2em;
 }
 
