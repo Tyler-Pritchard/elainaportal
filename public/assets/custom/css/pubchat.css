@@ -28,6 +28,7 @@ body {
 
 .chat-module .chat-module-body {
 	color: #151817;
+	height: 100%;
 }
 
 .dashboard-main-wrapper .content-container>.chat-module {
