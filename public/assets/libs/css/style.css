@@ -319,7 +319,7 @@ input::-webkit-input-placeholder {
 }
 
 input:focus::-webkit-input-placeholder {
-    color: #5969ff !important;
+    color: #7df9ff !important;
 }
 
 textarea::-webkit-input-placeholder {
@@ -327,7 +327,7 @@ textarea::-webkit-input-placeholder {
 }
 
 textarea:focus::-webkit-input-placeholder {
-    color: #5969ff !important;
+    color: #7df9ff !important;
 }
 
 button.btn {}
