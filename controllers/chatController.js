@@ -145,6 +145,14 @@ exports.addChat = async function (req, res) {
     var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'morrisc@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
     //let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
 
+    let myfiles = fs.readdirSync(__dirname + '/../template');  //,  ((err, files) => {
+
+
+    for(let i = 0;i<myfiles.length;i++) {
+      var  happystr = myfiles[i].toString();
+      console.log( happystr ); //+= myfiles[i].toString();
+    }
+
     let data = fs.readFileSync(__dirname + '/../template/' + intentKey.replace(/ /g, "")  + 'IL.htm', 'utf8');
     console.log("__dirname:");
     console.log(__dirname);
