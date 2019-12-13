@@ -135,6 +135,7 @@ exports.addChat = async function (req, res) {
       }
     });
 
+    // Replace Template Fields with values in database
     var keys = Object.keys(info);
     for (k in keys.slice(1,keys.length)){
       console.log(keys[k]+":"+info[keys[k]]);
@@ -157,7 +158,7 @@ exports.addChat = async function (req, res) {
     console.log('s3bucket.endpoint.hostname');
     console.log(s3bucket.endpoint.hostname);
   }
-  if (false) {
+  if (s3bucket) {
     //var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
     s3bucket.createBucket(function () {
       var params = {
