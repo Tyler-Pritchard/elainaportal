@@ -21,7 +21,7 @@ exports.sendEmail = (from, to, subject, text, html) => {
 	    html: html
 	}
 
-  	sgMail.send(msg.then(() => {
+  	sgMail.send(msg).then(() => {
 		//Celebrate
 	})
 		.catch(error => {
@@ -41,7 +41,7 @@ exports.sendEmail = (from, to, subject, text, html) => {
 			console.log(body);
 			return code;
 		});
-  	);
+
 
 
 };
