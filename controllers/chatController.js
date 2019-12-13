@@ -122,11 +122,13 @@ exports.addChat = async function (req, res) {
     intents.set("Mutual Non-Disclosure Agreement", "Mutual_Non_Disclosure_Agreement")
     intents.set("Corporate Bylaws", "Corporate_Bylaws")
 
+    var intentKey = "Background Check Policy";
     var intentValue = "Background_Check_Policy";
     intents.forEach(logMapElements);
     intents.forEach(function(value,key,map) {
       console.log(key.toLowerCase()+value);
       if (resultText.toLowerCase().includes(key.toLowerCase())) {
+        intentKey = key;
         intentValue = value;
       }
     });
@@ -141,7 +143,8 @@ exports.addChat = async function (req, res) {
     //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     console.log('<strong>There are documents from ' + req + '</strong>');
     var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'morrisc@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
-    let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
+    //let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
+    let data = fs.readFileSync(__dirname + '/../template/' + intentKey  + ' IL.htm', 'utf8');
     console.log("__dirname:");
     console.log(__dirname);
     console.log('data.length');
@@ -181,7 +184,8 @@ exports.addChat = async function (req, res) {
     //data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
     //data = data.replaceAll('d.position', info['position']);
     var converted = htmlDocxJs.asBlob(data);
-    var doclink = req.user.accessCode + '-Background Check Policy IL.docx';
+    //var doclink = req.user.accessCode + '-Background Check Policy IL.docx';
+    var doclink = req.user.accessCode + '-' + intentKey + ' IL.docx';
     var ep = new AWS.Endpoint('https://storage.googleapis.com');
     var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
     console.log('s3bucket.endpoint.hostname');
@@ -191,7 +195,7 @@ exports.addChat = async function (req, res) {
     //var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
     s3bucket.createBucket(function () {
       var params = {
-          Key: req.user.accessCode + '-Background Check Policy IL.docx', //file.name doesn't exist as a property
+          Key: req.user.accessCode + '-' + intentKey + ' IL.docx', //file.name doesn't exist as a property
           Body: converted
       };
       s3bucket.upload(params, function (err, data) {
