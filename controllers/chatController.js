@@ -111,7 +111,7 @@ exports.addChat = async function (req, res) {
 
     var keys = Object.keys(info);
     for (k in keys){
-      console.log(k.toString());
+      console.log(keys[k]+":"+info[keys[k]]);
     }
     //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     console.log('<strong>There are documents from ' + req + '</strong>');
