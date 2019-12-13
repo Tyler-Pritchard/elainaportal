@@ -124,7 +124,8 @@ exports.addChat = async function (req, res) {
 
     var intentValue = "Background_Check_Policy";
     intents.forEach(logMapElements);
-    intents.forEach(function(value,key,map) {//console.log("x")
+    intents.forEach(function(value,key,map) {
+      console.log(key+value);
 
     });
 
