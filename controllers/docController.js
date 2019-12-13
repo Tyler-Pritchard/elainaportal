@@ -18,8 +18,8 @@ exports.getDocsToApprove = async (req, res) => {
 
   console.log("Docs2Approve");
 
-	//var docs = await Doc.find({approver: current});
-	var docs = await Doc.find({user: current});
+	var docs = await Doc.find({approver: current});
+	//var docs = await Doc.find({user: current});
 	console.log("docs:");
 	console.log(docs);
 	console.log("docs.length:");
@@ -84,7 +84,8 @@ exports.fileUpload = async (req, res) => {
       // file.path = __dirname + '/../public/docs/' + file.name;
     fs.readFile(file.path, function (err, data) {
 		var ep = new AWS.Endpoint('https://storage.googleapis.com');
-      var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
+		//var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
+		var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
       console.log(s3bucket.endpoint.hostname);
 
       s3bucket.createBucket(function () {
@@ -140,7 +141,8 @@ exports.getApprovedDocs = async (req, res) => {
 	var ep = new AWS.Endpoint('https://storage.googleapis.com');
 	console.log("ep.hostname");
 	console.log(ep.hostname);
-	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
+	//var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
+	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711' },endpoint: ep});
 	console.log("s3bucket.endpoint.hostname");
 	console.log(s3bucket.endpoint.hostname);
 
@@ -165,7 +167,7 @@ exports.getApprovedDocs = async (req, res) => {
 					temp['approver'] = docs[i].approver;
 					doclinks.push(temp);
 				}
-				if (true) {
+				if (false) {
 					var temp = {...link};
 					temp['user'] = docs[i].user;
 					temp['approver'] = docs[i].approver;

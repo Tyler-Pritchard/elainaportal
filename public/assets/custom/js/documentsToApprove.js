@@ -4,7 +4,8 @@ $(document).ready(function(){
       return target.replace(new RegExp(search, 'g'), replacement);
     };
     //var bucketurl = "https://herokustorage711.s3.amazonaws.com/";
-    var bucketurl = "https://console.cloud.google.com/storage/browser/herokustorage711";
+    //var bucketurl = "https://console.cloud.google.com/storage/browser/herokustorage247appout/";
+    var bucketurl = "https://console.cloud.google.com/storage/browser/herokustorage711/";
     console.log("bucketurl");
     console.log(bucketurl);
     var getDocsToApprove = function() {
