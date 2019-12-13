@@ -28,7 +28,10 @@ exports.getDocsToApprove = async (req, res) => {
 	var doclist = [];
   if (docs) {
   	for (var i = docs.length - 1; i >= 0; i--) {
-  		var doclinks = [];
+		console.log("i");
+		console.log(i);
+		console.log(docs[i]);
+		var doclinks = [];
   		for (var j = 0; j < docs[i].link.length; j++) {
   			var link = docs[i].link[j];
   			if (link['status'] == "Not approved") {
