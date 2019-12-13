@@ -112,7 +112,7 @@ exports.addChat = async function (req, res) {
     let intents = new Map();
     intents.set("Family Medical Leave Policy", "Family_Medical_Leave_Policy")
     intents.set("Background Check Policy", "Background_Check_Policy")
-    intents.set("operating agreement", "opr_agreement")
+    intents.set("operating agreement", "Operating_Agreement")
     intents.set("Employee Non-Compete Agreement", "Employee_NonCompete_Agreement")
     intents.set("Dress Code Policy", "Dress_Code_Policy")
     intents.set("Independent Contractor Agreement", "Independent_Contractor_Agreement")
@@ -122,9 +122,13 @@ exports.addChat = async function (req, res) {
     intents.set("Mutual Non-Disclosure Agreement", "Mutual_Non_Disclosure_Agreement")
     intents.set("Corporate Bylaws", "Corporate_Bylaws")
 
+    var intentValue = "Background_Check_Policy";
     intents.forEach(logMapElements);
+    intents.forEach(function(value,key,map) {//console.log("x")
 
-    var info = currentUser[intents[Object.keys(intents)[1]]]; //'Background_Check_Policy'];
+    });
+
+    var info = currentUser[intentValue]; //:s[Object.keys(intents)[1]]]; //'Background_Check_Policy'];
 
     console.log("typeof info:");
     console.log(typeof info);
