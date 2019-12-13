@@ -161,7 +161,7 @@ exports.getApprovedDocs = async (req, res) => {
 					temp['approver'] = docs[i].approver;
 					doclinks.push(temp);
 				}
-				if (false) {
+				if (true) {
 					var temp = {...link};
 					temp['user'] = docs[i].user;
 					temp['approver'] = docs[i].approver;
