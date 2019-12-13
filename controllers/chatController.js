@@ -126,7 +126,9 @@ exports.addChat = async function (req, res) {
     intents.forEach(logMapElements);
     intents.forEach(function(value,key,map) {
       console.log(key.toLowerCase()+value);
-
+      if (resultText.toLowerCase().includes(key.toLowerCase())) {
+        intentValue = value;
+      }
     });
 
     var info = currentUser[intentValue]; //:s[Object.keys(intents)[1]]]; //'Background_Check_Policy'];
