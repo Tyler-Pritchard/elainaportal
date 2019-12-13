@@ -19,8 +19,13 @@ exports.getDocsToApprove = async (req, res) => {
   console.log("Docs2Approve");
 
   var docs = await Doc.find({approver: current});
+	console.log("docs:");
+	console.log(docs);
+	console.log("docs.length:");
+	console.log(docs.length);
 
-  var doclist = [];
+
+	var doclist = [];
   if (docs) {
   	for (var i = docs.length - 1; i >= 0; i--) {
   		var doclinks = [];
