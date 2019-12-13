@@ -138,10 +138,15 @@ exports.getApprovedDocs = async (req, res) => {
 	var docs = await Doc.find({user: current});
 	console.log("docs:");
 	console.log(docs);
+	console.log("docs.length:");
+	console.log(docs.length);
 
 	var doclist = [];
 	if (docs) {
 		for (var i = docs.length - 1; i >= 0; i--) {
+			console.log("i");
+			console.log(i);
+			console.log(docs[i]);
 			var doclinks = [];
 			for (var j = 0; j < docs[i].link.length; j++) {
 				var link = docs[i].link[j];
@@ -157,6 +162,8 @@ exports.getApprovedDocs = async (req, res) => {
 	}
 	console.log("doclist.toString()");
 	console.log(doclist.toString());
+	console.log("doclist.length");
+	console.log(doclist.length);
 	return res.json({ status: "success", data: doclist });
 };
 
