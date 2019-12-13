@@ -107,7 +107,7 @@ exports.addChat = async function (req, res) {
     console.log("typeof info:");
     console.log(typeof info);
     console.log("info.length:");
-    console.log(info.length);
+    console.log(info.keys().length);
 
     //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     console.log('<strong>There are documents from ' + req + '</strong>');
