@@ -20,7 +20,28 @@ exports.sendEmail = (from, to, subject, text, html) => {
 	    text: text,
 	    html: html
 	}
-  	sgMail.send(msg);
+
+  	sgMail.send(msg.then(() => {
+		//Celebrate
+	})
+		.catch(error => {
+
+			//Log friendly error
+			console.error(error.toString());
+
+			//Extract error msg
+			const {message, code, response} = error;
+
+			//Extract response msg
+			const {headers, body} = response;
+
+			console.log("headers");
+			console.log(headers);
+			console.log("body");
+			console.log(body);
+			return code;
+		});
+  	);
 
 
 };
