@@ -18,7 +18,8 @@ exports.getDocsToApprove = async (req, res) => {
 
   console.log("Docs2Approve");
 
-  var docs = await Doc.find({approver: current});
+	//var docs = await Doc.find({approver: current});
+	var docs = await Doc.find({user: current});
 	console.log("docs:");
 	console.log(docs);
 	console.log("docs.length:");
