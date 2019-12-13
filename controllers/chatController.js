@@ -153,7 +153,8 @@ exports.addChat = async function (req, res) {
       console.log( happystr ); //+= myfiles[i].toString();
     }
 
-    let data = fs.readFileSync(__dirname + '/../template/' + intentKey.replace(/ /g, "")  + 'IL.htm', 'utf8');
+    //let data = fs.readFileSync(__dirname + '/../template/' + intentKey.replace(/ /g, "")  + 'IL.htm', 'utf8');
+    let data = fs.readFileSync(__dirname + '/../template/' + intentKey + ' IL.htm', 'utf8');
     console.log("__dirname:");
     console.log(__dirname);
     console.log('data.length');
@@ -178,7 +179,7 @@ exports.addChat = async function (req, res) {
 
     // Replace Template Fields with values in database
     var keys = Object.keys(info);
-    for (k in keys.slice(1,keys.length)){
+    for (k in keys.slice(0,keys.length)){
       console.log(keys[k]+":"+info[keys[k]]);
       data = data.replaceAll('d.'+keys[k], info[keys[k]]);
       //console.log(data);
