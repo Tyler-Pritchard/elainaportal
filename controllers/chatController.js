@@ -109,16 +109,13 @@ exports.addChat = async function (req, res) {
     console.log("info.length:");
     //console.log(info.keys().length);
 
-    var keys = Object.keys(info);
-    for (k in keys.slice(1,keys.length)){
-      console.log(keys[k]+":"+info[keys[k]]);
-    }
     //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     console.log('<strong>There are documents from ' + req + '</strong>');
     var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'morrisc@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
     let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
     console.log("__dirname:");
     console.log(__dirname);
+    console.log('data.length');
     console.log(data.length);
 
     String.prototype.replaceAll = function (search, replacement) {
@@ -138,13 +135,21 @@ exports.addChat = async function (req, res) {
       }
     });
 
+    var keys = Object.keys(info);
+    for (k in keys.slice(1,keys.length)){
+      console.log(keys[k]+":"+info[keys[k]]);
+      data = data.replaceAll('d.'+keys[k], info[keys[k]]);
+      console.log(data);
+    }
 
+    console.log('data.length');
+    console.log(data.length);
 
-    data = data.replaceAll('d.employeeName', info['employeeName']);
+    //data = data.replaceAll('d.employeeName', info['employeeName']);
     //console.log(data);
-    data = data.replaceAll('d.requireMayRequire', info['requireMayRequire']);
-    data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
-    data = data.replaceAll('d.position', info['position']);
+    //data = data.replaceAll('d.requireMayRequire', info['requireMayRequire']);
+    //data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
+    //data = data.replaceAll('d.position', info['position']);
     var converted = htmlDocxJs.asBlob(data);
     var doclink = req.user.accessCode + '-Background Check Policy IL.docx';
     var ep = new AWS.Endpoint('https://storage.googleapis.com');
