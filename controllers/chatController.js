@@ -110,21 +110,17 @@ exports.addChat = async function (req, res) {
     //var formDocmArray = [ "Background_Check_Policy", "Family_and_Medical_Leave_Policy" ];
 
     let intents = new Map();
-    intents.set("Default Welcome Intent", welcome);
-    intents.set("Lost Access Code", lost_access_code)
-    intents.set("Subscription", subscription)
+    intents.set("Family Medical Leave Policy", Family_Medical_Leave_Policy)
+    intents.set("Background Check Policy", Background_Check_Policy)
     intents.set("operating agreement", opr_agreement)
     intents.set("Employee Non-Compete Agreement", Employee_NonCompete_Agreement)
     intents.set("Dress Code Policy", Dress_Code_Policy)
     intents.set("Independent Contractor Agreement", Independent_Contractor_Agreement)
     intents.set("Buy-Sell Agreement", Buy_Sell_Agreement)
-    intents.set("draft a document", ask_ques)
     intents.set("Equal Opportunity Employment Policy", Equal_Opportunity_Employment_Policy)
     intents.set("Operating Agreement Multi-Member", Operating_Agreement_Multi_Member)
     intents.set("Mutual Non-Disclosure Agreement", Mutual_Non_Disclosure_Agreement)
     intents.set("Corporate Bylaws", Corporate_Bylaws)
-    intents.set("Family Medical Leave Policy", Family_Medical_Leave_Policy)
-    intents.set("Background Check Policy", Background_Check_Policy)
 
     intents.forEach(logMapElements);
 
