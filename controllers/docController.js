@@ -75,7 +75,7 @@ exports.fileUpload = async (req, res) => {
       // file.path = __dirname + '/../public/docs/' + file.name;
     fs.readFile(file.path, function (err, data) {
 		var ep = new AWS.Endpoint('https://storage.googleapis.com');
-      var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
+      var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
       console.log(s3bucket.endpoint.hostname);
 
       s3bucket.createBucket(function () {
@@ -131,11 +131,13 @@ exports.getApprovedDocs = async (req, res) => {
 	var ep = new AWS.Endpoint('https://storage.googleapis.com');
 	console.log("ep.hostname");
 	console.log(ep.hostname);
-	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
+	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
 	console.log("s3bucket.endpoint.hostname");
 	console.log(s3bucket.endpoint.hostname);
 
 	var docs = await Doc.find({user: current});
+	console.log("docs:");
+	console.log(docs);
 
 	var doclist = [];
 	if (docs) {
