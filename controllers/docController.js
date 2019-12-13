@@ -155,6 +155,7 @@ exports.getApprovedDocs = async (req, res) => {
 			doclist.push(...doclinks);
 		}
 	}
+	console.log("doclist.toString()");
 	console.log(doclist.toString());
 	return res.json({ status: "success", data: doclist });
 };
