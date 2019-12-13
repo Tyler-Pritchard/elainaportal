@@ -139,7 +139,7 @@ exports.addChat = async function (req, res) {
     for (k in keys.slice(1,keys.length)){
       console.log(keys[k]+":"+info[keys[k]]);
       data = data.replaceAll('d.'+keys[k], info[keys[k]]);
-      console.log(data);
+      //console.log(data);
     }
 
     console.log('data.length');
