@@ -227,7 +227,7 @@ exports.getDocsNotApproved = async (req, res) => {
 			var doclinks = [];
 			for (var j = 0; j < docs[i].link.length; j++) {
 				var link = docs[i].link[j];
-				if (link['status'] == "Not Approved") {
+				if (link['status'] == "Not approved") {
 					var temp = {...link};
 					temp['user'] = docs[i].user;
 					temp['approver'] = docs[i].approver;
