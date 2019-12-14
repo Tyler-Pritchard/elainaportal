@@ -110,13 +110,12 @@ exports.fileUpload = async (req, res) => {
   res.status(200).send('');
 };
 
-
 exports.getApprovedDocs = async (req, res) => {
 	let current = req.user.email;
 	console.log("AWS.Endpoint.toString()");
 	//AWS.config.loadFromPath('/app/config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
-		//secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
-		//s3BucketEndpoint: 'https://storage.googleapis.com'
+	//secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+	//s3BucketEndpoint: 'https://storage.googleapis.com'
 	//});
 
 //	console.log(AWS.Endpoint.toString());
@@ -134,9 +133,9 @@ exports.getApprovedDocs = async (req, res) => {
 
 
 	console.log('ApprovedDocs');
-			console.log("Access Key:", AWS.config.credentials.accessKeyId);
-			console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+	console.log("Access Key:", AWS.config.credentials.accessKeyId);
+	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
 
 	var ep = new AWS.Endpoint('https://storage.googleapis.com');
 	console.log("ep.hostname");
@@ -155,9 +154,9 @@ exports.getApprovedDocs = async (req, res) => {
 	var doclist = [];
 	if (docs) {
 		for (var i = docs.length - 1; i >= 0; i--) {
-			console.log("i");
-			console.log(i);
-			console.log(docs[i]);
+	//		console.log("i");
+	//		console.log(i);
+	//		console.log(docs[i]);
 			var doclinks = [];
 			for (var j = 0; j < docs[i].link.length; j++) {
 				var link = docs[i].link[j];
@@ -166,13 +165,6 @@ exports.getApprovedDocs = async (req, res) => {
 					temp['user'] = docs[i].user;
 					temp['approver'] = docs[i].approver;
 					doclinks.push(temp);
-				}
-				if (false) {
-					var temp = {...link};
-					temp['user'] = docs[i].user;
-					temp['approver'] = docs[i].approver;
-					doclinks.push(temp);
-
 				}
 			}
 			doclist.push(...doclinks);
@@ -184,6 +176,74 @@ exports.getApprovedDocs = async (req, res) => {
 	console.log(doclist.length);
 	return res.json({ status: "success", data: doclist });
 };
+
+exports.getDocsNotApproved = async (req, res) => {
+	let current = req.user.email;
+	console.log("AWS.Endpoint.toString()");
+	//AWS.config.loadFromPath('/app/config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+	//secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+	//s3BucketEndpoint: 'https://storage.googleapis.com'
+	//});
+
+//	console.log(AWS.Endpoint.toString());
+	AWS.config.getCredentials(function(err) {
+		if (err) console.log(err.stack); // credentials not loaded
+		else {
+			console.log('ApprovedDocs');
+
+			console.log("Access Key:", AWS.config.credentials.accessKeyId);
+			console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+			console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+		}
+	});
+
+
+
+	console.log('NOT ApprovedDocs');
+	console.log("Access Key:", AWS.config.credentials.accessKeyId);
+	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+
+	var ep = new AWS.Endpoint('https://storage.googleapis.com');
+	console.log("ep.hostname");
+	console.log(ep.hostname);
+	//var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
+	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711' },endpoint: ep});
+	console.log("s3bucket.endpoint.hostname");
+	console.log(s3bucket.endpoint.hostname);
+
+	var docs = await Doc.find({user: current});
+	console.log("docs:");
+	console.log(docs);
+	console.log("docs.length:");
+	console.log(docs.length);
+
+	var doclist = [];
+	if (docs) {
+		for (var i = docs.length - 1; i >= 0; i--) {
+			//console.log("i");
+			//console.log(i);
+			//console.log(docs[i]);
+			var doclinks = [];
+			for (var j = 0; j < docs[i].link.length; j++) {
+				var link = docs[i].link[j];
+				if (link['status'] == "Not Approved") {
+					var temp = {...link};
+					temp['user'] = docs[i].user;
+					temp['approver'] = docs[i].approver;
+					doclinks.push(temp);
+				}
+			}
+			doclist.push(...doclinks);
+		}
+	}
+	console.log("doclist.toString()");
+	console.log(doclist.toString());
+	console.log("doclist.length");
+	console.log(doclist.length);
+	return res.json({ status: "success", data: doclist });
+};
+
 
 exports.getUnfinishedDocs = async (req, res) => {
   let current = req.user.email;

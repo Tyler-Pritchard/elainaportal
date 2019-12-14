@@ -69,6 +69,7 @@ router.get("/terms", (req, res, next) => {
 
 // Doc list
 
+router.get("/api/getDocsNotApproved", docController.getDocsNotApproved);
 router.get("/api/getDocsToApprove", docController.getDocsToApprove);
 router.get("/api/getApprovedDocs", docController.getApprovedDocs);
 router.post("/api/approveDoc", docController.approveDoc);

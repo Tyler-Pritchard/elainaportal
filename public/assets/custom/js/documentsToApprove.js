@@ -10,7 +10,7 @@ $(document).ready(function(){
     console.log(bucketurl);
     var getDocsToApprove = function() {
         var token = localStorage.getItem("token");
-        axios.get("/api/getDocsToApprove",
+        axios.get("/api/getDocsNotApproved",
         {
             headers: {
                 Authorization: "bearer " + token //the token is a variable which holds the token
@@ -24,10 +24,11 @@ $(document).ready(function(){
                 var htmlcontent = ``;
                 for (var i = 0; i < data.length; i++) {
 
-                    htmlcontent += 
+                // No Download Link for Not Yet Approved Documents
+                    // <td><a class='doclink btn btn-default blue' href=${bucketurl + data[i]._doc.url.replaceAll(" ", "%20")} target="_blank">Download</a></td>
+                    htmlcontent +=
                         `<tr>
                             <td><span class="docname">${data[i]._doc.url}</span></td>
-                            <td><a class='doclink btn btn-default blue' href=${bucketurl + data[i]._doc.url.replaceAll(" ", "%20")} target="_blank">Download</a></td>
                         </tr>`;
                 }
                 htmlbody.append(htmlcontent);
