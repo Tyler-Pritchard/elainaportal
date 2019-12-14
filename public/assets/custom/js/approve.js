@@ -3,8 +3,11 @@ $(document).ready(function(){
       var target = this;
       return target.replace(new RegExp(search, 'g'), replacement);
     };
-
-    var bucketurl = "https://herokustorage711.s3.amazonaws.com/";
+    //var bucketurl = "https://herokustorage711.s3.amazonaws.com/";
+    //var bucketurl = "https://console.cloud.google.com/storage/browser/herokustorage247appout/";
+    var bucketurl = "https://console.cloud.google.com/storage/browser/herokustorage711/";
+    console.log("bucketurl");
+    console.log(bucketurl);
     var getDocsToApprove = function() {
         var token = localStorage.getItem("token");
         axios.get("/api/getDocsToApprove", 
