@@ -252,7 +252,7 @@ exports.addChat = async function (req, res) {
           text: content,
           date: Date.now()
         }, {
-          sender: "Elaina",
+          sender: "ElaiNA",
           text: resultText,
           date: Date.now()
         }]
@@ -262,7 +262,7 @@ exports.addChat = async function (req, res) {
     else {
       // var chatContent = result.content;
       result.content.push({ sender: req.user.username, text: content, date: Date.now() });
-      result.content.push({ sender: "Elaina", text: resultText, date: Date.now() });
+      result.content.push({ sender: "ElaiNA", text: resultText, date: Date.now() });
       result.save();
       // Chat.update({username: req.user.username}, {content: chatContent}, upsert = true);
     }
@@ -286,14 +286,14 @@ exports.getChats = async function (req, res) {
         var chat = new Chat({
           username: user.username, 
           content: [{
-            sender: "Elaina",
+            sender: "ElaiNA",
             text: resultText,
             date: Date.now()
           }]
         })
         chat.save()
         content = [{
-          sender: "Elaina",
+          sender: "ElaiNA",
           text: resultText,
           date: Date.now()
         }]
