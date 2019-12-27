@@ -197,7 +197,7 @@ exports.addChat = async function (req, res) {
     //var doclink = req.user.accessCode + '-Background Check Policy IL.docx';
     var doclink = req.user.accessCode + '-' + intentKey + ' IL.docx';
     var ep = new AWS.Endpoint('https://storage.googleapis.com');
-    var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
+    var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712'  },endpoint: ep});
     console.log('s3bucket.endpoint.hostname');
     console.log(s3bucket.endpoint.hostname);
   }

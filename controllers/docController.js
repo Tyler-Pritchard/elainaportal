@@ -85,7 +85,7 @@ exports.fileUpload = async (req, res) => {
     fs.readFile(file.path, function (err, data) {
 		var ep = new AWS.Endpoint('https://storage.googleapis.com');
 		//var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
-		var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'  },endpoint: ep});
+		var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712'  },endpoint: ep});
       console.log(s3bucket.endpoint.hostname);
 
       s3bucket.createBucket(function () {
@@ -141,7 +141,7 @@ exports.getApprovedDocs = async (req, res) => {
 	console.log("ep.hostname");
 	console.log(ep.hostname);
 	//var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
-	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711' },endpoint: ep});
+	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712' },endpoint: ep});
 	console.log("s3bucket.endpoint.hostname");
 	console.log(s3bucket.endpoint.hostname);
 
@@ -208,7 +208,7 @@ exports.getDocsNotApproved = async (req, res) => {
 	console.log("ep.hostname");
 	console.log(ep.hostname);
 	//var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
-	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711' },endpoint: ep});
+	var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712' },endpoint: ep});
 	console.log("s3bucket.endpoint.hostname");
 	console.log(s3bucket.endpoint.hostname);
 
