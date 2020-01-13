@@ -284,7 +284,7 @@ exports.getChats = async function (req, res) {
       var firstHello = 'Hi';
       myDialogflow.chat(firstHello, sessionPath).then(resultText => {
         var chat = new Chat({
-          username: user.username, 
+          username: user.username,
           content: [{
             sender: "ELaiNA",
             text: resultText,
@@ -309,6 +309,59 @@ exports.getChats = async function (req, res) {
           date: content.date
         })
       });
+      res.json({ status: "success", data: chatcontent });
+    }
+  });
+};
+
+// Remove chat history to start conversation over
+exports.getFreshChat = async function (req, res) {
+  let user = req.user;
+  let chatcontent = [];
+  console.log("Getting Fresh Chat for user",user.username);
+  //This would actually delete the user.... we'll implement that function later
+  /* Chat.findOneAndDelete({ username: user.username }).then((result)
+      if(result) {
+        console.log("Found and Deleted a convo");
+      } else {
+        console.log("Didnt find any convos");
+      }
+  ) */
+
+
+  Chat.findOne({ username: user.username }).then((result) => {
+    if (!result) {
+      req.session['sessionPath'] = myDialogflow.getSessionPath();
+      sessionPath = req.session['sessionPath'];
+      var firstHello = 'Hi';
+      myDialogflow.chat(firstHello, sessionPath).then(resultText => {
+        var chat = new Chat({
+          username: user.username,
+          content: [{
+            sender: "ELaiNA",
+            text: resultText,
+            date: Date.now()
+          }]
+        })
+        chat.save()
+        content = [{
+          sender: "ELaiNA",
+          text: resultText,
+          date: Date.now()
+        }]
+        res.json({ status: "success", data: content});
+      });
+    }
+    else {
+      chatcontent = []
+      result.content.map(content => {
+        chatcontent = [{
+          sender: "ELaiNA",
+          text: "Welcome to ELaiNA Chat.",
+          date: Date.now()
+        }]
+      });
+      console.log("chatcontent:",chatcontent);
       res.json({ status: "success", data: chatcontent });
     }
   });
