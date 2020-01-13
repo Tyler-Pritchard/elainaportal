@@ -4,7 +4,8 @@ $(document).ready(function(){
 
     var getChats = function() {
         var token = localStorage.getItem("token");
-        axios.get("/api/getChats", 
+        axios.get("/api/getChats",
+            //axios.get("/api/getFreshChat",
         {
             headers: {
                 Authorization: "bearer " + token //the token is a variable which holds the token
