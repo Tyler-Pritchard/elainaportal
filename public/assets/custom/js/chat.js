@@ -118,10 +118,27 @@ $(document).ready(function(){
               })
               .then((res) => {
                   console.log(res);
-                  
-                  if (res["data"]["status"] == 'success') {
+                  console.log(res.data.fulfillmentText);
+                  if (res["data"]["status"] == 200) {
                       $(this).val("");
-                      getChats();
+                    //   getChats();
+                    var contentmodule = $(".chat-module-body");
+                    var htmlcontent = `
+                        <div class="media chat-item">
+                            <span class="chat-avatar">B</span>
+                            <div class="media-body">
+                                <div class="chat-item-title">
+                                    <span class="chat-item-author">Public Agent</span>
+                                    <span>Just now</span>
+                                </div>
+                                <div class="chat-item-body">
+                                    <p>${res.data.fulfillmentText}</p>
+                                </div>
+                            </div>
+                        </div>`;
+                    contentmodule.append(htmlcontent);
+                    var count = $(".chat-item").length;
+                    $(".chat-module-body").scrollTop(145 * count);
                   }
               })
               .catch(() => {
