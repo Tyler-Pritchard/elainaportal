@@ -99,10 +99,10 @@ $(document).ready(function(){
             var contentmodule = $(".chat-module-body");
             var htmlcontent = `
                 <div class="media chat-item">
-                    <span class="chat-avatar">${username.charAt(0).toUpperCase()}</span>
+                    <span class="chat-avatar">C</span>
                     <div class="media-body">
                         <div class="chat-item-title">
-                            <span class="chat-item-author">${username}</span>
+                            <span class="chat-item-author">Counsel Seeker</span>
                             <span>Just now</span>
                         </div>
                         <div class="chat-item-body">
