@@ -83,7 +83,7 @@ $(document).ready(function(){
             }
         });
     }
-    getChats();
+    // getChats();
     
 
     $('body').on('click', '#logout', function(event) {
