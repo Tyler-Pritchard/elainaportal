@@ -119,7 +119,7 @@ $(document).ready(function(){
               .then((res) => {
                   console.log(res);
                   console.log(res.data.fulfillmentText);
-                  if (res["data"]["status"] == 200) {
+                  if (res.status == 200) {
                       $(this).val("");
                     //   getChats();
                     var contentmodule = $(".chat-module-body");
