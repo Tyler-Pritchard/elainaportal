@@ -113,7 +113,7 @@ $(document).ready(function(){
             contentmodule.append(htmlcontent);
             var count = $(".chat-item").length;
             $(".chat-module-body").scrollTop(145 * count);
-            axios.post("/api/chat", {
+            axios.post("/api/pubchat", {
               content: content
             },
             {
@@ -122,6 +122,8 @@ $(document).ready(function(){
                 }
             })
             .then((res) => {
+                console.log('Public Agent: ',res);
+                
                 if (res["data"]["status"] == 'success') {
                     $(this).val("");
                     getChats();
