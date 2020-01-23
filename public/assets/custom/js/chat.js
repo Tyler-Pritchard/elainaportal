@@ -118,6 +118,7 @@ $(document).ready(function(){
               })
               .then((res) => {
                   console.log(res);
+                  
                   if (res["data"]["status"] == 'success') {
                       $(this).val("");
                       getChats();
