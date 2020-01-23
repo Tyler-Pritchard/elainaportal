@@ -125,10 +125,10 @@ $(document).ready(function(){
                     var contentmodule = $(".chat-module-body");
                     var htmlcontent = `
                         <div class="media chat-item">
-                            <span class="chat-avatar">B</span>
+                            <span class="chat-avatar">ELaiNA</span>
                             <div class="media-body">
                                 <div class="chat-item-title">
-                                    <span class="chat-item-author">Public Agent</span>
+                                <img class="img-rounded img-responsive" src="./assets/custom/images/newElainaBlue2.png" height="48">
                                     <span>Just now</span>
                                 </div>
                                 <div class="chat-item-body">
