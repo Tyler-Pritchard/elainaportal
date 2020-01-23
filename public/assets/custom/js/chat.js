@@ -139,6 +139,7 @@ $(document).ready(function(){
                     contentmodule.append(htmlcontent);
                     var count = $(".chat-item").length;
                     $(".chat-module-body").scrollTop(145 * count);
+                    $(this).val("");
                   }
               })
               .catch(() => {
