@@ -125,7 +125,7 @@ $(document).ready(function(){
                     var contentmodule = $(".chat-module-body");
                     var htmlcontent = `
                         <div class="media chat-item">
-                            <span class="chat-avatar">ELaiNA</span>
+                            <span class="chat-avatar">E</span>
                             <div class="media-body">
                                 <div class="chat-item-title">
                                 <img class="img-rounded img-responsive" src="./assets/custom/images/newElainaBlue2.png" height="48">
