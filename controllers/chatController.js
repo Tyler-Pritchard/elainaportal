@@ -16,6 +16,27 @@ var emailSender = require('./emailSender.js');
 var htmlDocxJs = require("html-docx-js");
 const AWS = require('aws-sdk');
 
+
+var request = require('request')
+var url = 'https://us-central1-elaina-public--woamtk.cloudfunctions.net/webApi/api/df_text_query'
+// Functions to export
+
+    // Function for Retriving Tweets
+  const getResultAgent =  async function(data) {
+      // Return result of query
+      return new Promise( ( resolve, reject ) => {
+        request.post(url,  {json : data}, function (error, res, body) {
+          if (error) {
+            console.error(error)
+            resolve(false)
+          }
+          var req_data = body
+          // console.log(req_data);
+          resolve(req_data)
+        })
+    })
+  }
+
 /**
  * Send a query to the dialogflow agent, and return the query result.
  * @param {string} projectId The project to be used
@@ -73,6 +94,13 @@ function getRandomInt(min, max) {
 
 function logMapElements(value, key, map) {
   console.log(`m[${key}] = ${value}`);
+}
+
+exports.publicChat = async function (req, res) {
+  let content = req.body.content;
+  result = getResultAgent({text : content});
+  console.log('DialogFlow API response: ',result);
+  return result
 }
 
 // Adds a new message to the chat log

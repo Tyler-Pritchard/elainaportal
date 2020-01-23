@@ -76,6 +76,8 @@ router.post("/api/approveDoc", docController.approveDoc);
 router.post("/api/fileUpload", docController.fileUpload);
 // ChatController
 
+router.post("/api/pubchat", chatController.publicChat);
+
 router.post("/api/chat", chatController.addChat);
 router.get("/api/getChats", chatController.getChats);
 
