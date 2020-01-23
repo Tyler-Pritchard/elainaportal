@@ -113,25 +113,38 @@ $(document).ready(function(){
             contentmodule.append(htmlcontent);
             var count = $(".chat-item").length;
             $(".chat-module-body").scrollTop(145 * count);
-            axios.post("/api/pubchat", {
-              content: content
-            },
-            {
-                headers: {
-                    Authorization: "bearer " + token //the token is a variable which holds the token
-                }
-            })
-            .then((res) => {
-                console.log('Public Agent: ',res);
+            axios.post("https://us-central1-elaina-public--woamtk.cloudfunctions.net/webApi/api/df_text_query", {
+                text: content
+              })
+              .then((res) => {
+                  console.log(res);
+                  if (res["data"]["status"] == 'success') {
+                      $(this).val("");
+                      getChats();
+                  }
+              })
+              .catch(() => {
+                  console.log("Sorry. Server unavailable. ");
+              }); 
+            // axios.post("/api/pubchat", {
+            //   content: content
+            // },
+            // {
+            //     headers: {
+            //         Authorization: "bearer " + token //the token is a variable which holds the token
+            //     }
+            // })
+            // .then((res) => {
+            //     console.log('Public Agent: ',res);
                 
-                if (res["data"]["status"] == 'success') {
-                    $(this).val("");
-                    getChats();
-                }
-            })
-            .catch(() => {
-                console.log("Sorry. Server unavailable. ");
-            }); 
+            //     if (res["data"]["status"] == 'success') {
+            //         $(this).val("");
+            //         getChats();
+            //     }
+            // })
+            // .catch(() => {
+            //     console.log("Sorry. Server unavailable. ");
+            // }); 
         }
         
     });
