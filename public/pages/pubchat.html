@@ -16,6 +16,14 @@
     <title>DeepLaw Client Dashboard</title>
 </head>
 
+<style>
+#new_btn_up:hover{
+background-color: white !important;
+color: black !important;
+border: 1px white solid !important;
+
+}
+</style>
 <body class="chat-body">
     <!-- ============================================================== -->
     <!-- main wrapper -->
@@ -56,8 +64,9 @@
                         </div>
                         <div class="chat-module-bottom">
                             <form class="chat-form">
-                                <textarea class="form-control mb-2" placeholder="Type message" rows="1"></textarea>
+                                <textarea class="form-control mb-2 grtvalue" placeholder="Type message" rows="1"></textarea>
                                 <div class="chat-form-buttons">
+                                  <a href="#">  <span id="new_btn_up" style="border: 1px black solid; background-color: black; color: white; box-shadow: 3px 3px 3px black ;margin-right: 7px;">Send</span></a>
                                     <button type="button" class="btn btn-link">
                                         <i class="far fa-smile"></i>
                                     </button>

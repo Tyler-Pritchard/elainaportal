@@ -91,13 +91,15 @@ $(document).ready(function(){
         window.location.href = "/";
     });
 
-    $('body').on('keyup', 'form.chat-form textarea', function(event) {
-        var content = $(this).val();
-        if (event.keyCode == 13 && !event.shiftKey) {
+    $('body').on('click', '#new_btn_up', function(event) {
+
+        var content = $('.grtvalue').val();
+        // alert(content);
+    
             var token = localStorage.getItem("token");
             var username = localStorage.getItem("username");
             var contentmodule = $(".chat-module-body");
-            var htmlcontent = `
+            var htmlcontent =`
                 <div class="media chat-item">
                     <span class="chat-avatar">C</span>
                     <div class="media-body">
@@ -164,7 +166,7 @@ $(document).ready(function(){
             // .catch(() => {
             //     console.log("Sorry. Server unavailable. ");
             // }); 
-        }
+        
         
     });
 })
