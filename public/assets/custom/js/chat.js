@@ -104,7 +104,7 @@ $(document).ready(function(){
                     <span class="chat-avatar">C</span>
                     <div class="media-body">
                         <div class="chat-item-title">
-                            <span class="chat-item-author">Counsel Seeker</span>
+                            <span class="chat-item-author">You</span>
                             <span>Just now</span>
                         </div>
                         <div class="chat-item-body">
