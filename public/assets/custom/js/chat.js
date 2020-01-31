@@ -91,6 +91,84 @@ $(document).ready(function(){
         window.location.href = "/";
     });
 
+    $('body').on('click', '#new_btn_up', function(event) {
+
+        var content = $('.grtvalue').val();
+        // alert(content);
+    
+            var token = localStorage.getItem("token");
+            var username = localStorage.getItem("username");
+            var contentmodule = $(".chat-module-body");
+            var htmlcontent =`
+                <div class="media chat-item">
+                <!-- <span class="chat-avatar">C</span> -->
+                    <div class="media-body">
+                        <div class="chat-item-title">
+                        <img class="img-rounded img-responsive" src="./assets/assets/custom/images/newElainaBlue2.png" height="48">
+                        <span>Just now</span>
+                        </div>
+                        <div class="chat-item-body">
+                            <p>${content}</p>
+                        </div>
+                    </div>
+                </div>`;
+            contentmodule.append(htmlcontent);
+            var count = $(".chat-item").length;
+            $(".chat-module-body").scrollTop(145 * count);
+            axios.post("https://us-central1-elaina-public--woamtk.cloudfunctions.net/webApi/api/df_text_query", {
+                text: content
+              })
+              .then((res) => {
+                  console.log(res);
+                  console.log(res.data.fulfillmentText);
+                  if (res.status == 200) {
+                      $('.form-control.mb-2.grtvalue').val("");
+                    //   getChats();
+                    var contentmodule = $(".chat-module-body");
+                    var htmlcontent = `
+                        <div class="media chat-item">
+                        <!--  <span class="chat-avatar">E</span> -->
+                            <div class="media-body">
+                                <div class="chat-item-title">
+                                <img class="img-rounded img-responsive" src="./assets/assets/custom/images/newElainaBlue2.png" height="48">
+                                    <span>Just now</span>
+                                </div>
+                                <div class="chat-item-body">
+                                    <p>${res.data.fulfillmentText}</p>
+                                </div>
+                            </div>
+                        </div>`;
+                    contentmodule.append(htmlcontent);
+                    var count = $(".chat-item").length;
+                    $(".chat-module-body").scrollTop(145 * count);
+                    $('.form-control.mb-2.grtvalue').val("");
+                  }
+              })
+              .catch(() => {
+                  console.log("Sorry. Server unavailable. ");
+              }); 
+            // axios.post("/api/pubchat", {
+            //   content: content
+            // },
+            // {
+            //     headers: {
+            //         Authorization: "bearer " + token //the token is a variable which holds the token
+            //     }
+            // })
+            // .then((res) => {
+            //     console.log('Public Agent: ',res);
+                
+            //     if (res["data"]["status"] == 'success') {
+            //         $(this).val("");
+            //         getChats();
+            //     }
+            // })
+            // .catch(() => {
+            //     console.log("Sorry. Server unavailable. ");
+            // }); 
+        
+        
+    });
     $('body').on('keyup', 'form.chat-form textarea', function(event) {
         var content = $(this).val();
         if (event.keyCode == 13 && !event.shiftKey) {
@@ -102,8 +180,13 @@ $(document).ready(function(){
                 <!-- <span class="chat-avatar">C</span> -->
                     <div class="media-body">
                         <div class="chat-item-title">
+<<<<<<< HEAD
                         <img class="img-rounded img-responsive" src="./assets/assets/custom/images/newElainaBlue2.png" height="48">
                         <span>Just now</span>
+=======
+                            <span class="chat-item-author">You</span>
+                            <span>Just now</span>
+>>>>>>> 8f63b4fde2157db921f7272b55de00849212f30c
                         </div>
                         <div class="chat-item-body">
                             <p>${content}</p>
@@ -167,4 +250,5 @@ $(document).ready(function(){
         }
         
     });
+
 })
