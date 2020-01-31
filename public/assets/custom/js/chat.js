@@ -180,13 +180,9 @@ $(document).ready(function(){
                 <!-- <span class="chat-avatar">C</span> -->
                     <div class="media-body">
                         <div class="chat-item-title">
-<<<<<<< HEAD
-                        <img class="img-rounded img-responsive" src="./assets/assets/custom/images/newElainaBlue2.png" height="48">
-                        <span>Just now</span>
-=======
-                            <span class="chat-item-author">You</span>
+                            <img class="img-rounded img-responsive" src="./assets/assets/custom/images/newElainaBlue2.png" height="48">
+
                             <span>Just now</span>
->>>>>>> 8f63b4fde2157db921f7272b55de00849212f30c
                         </div>
                         <div class="chat-item-body">
                             <p>${content}</p>
