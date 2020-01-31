@@ -63,7 +63,7 @@ $(document).ready(function(){
                     }
                     else {
                         htmlcontent += `<img class="img-rounded img-responsive" src="/assets/img/elaina_avatar.png" height="48">`;
-                    }
+                        }
                         
                     htmlcontent += `
                         <div class="media-body">
@@ -101,7 +101,7 @@ $(document).ready(function(){
             var contentmodule = $(".chat-module-body");
             var htmlcontent =`
                 <div class="media chat-item">
-                    <span class="chat-avatar">C</span>
+                <!-- <span class="chat-avatar">C</span> -->
                     <div class="media-body">
                         <div class="chat-item-title">
                         <img class="img-rounded img-responsive" src="/assets/img/elaina_avatar.png" height="48">
@@ -127,9 +127,10 @@ $(document).ready(function(){
                     var contentmodule = $(".chat-module-body");
                     var htmlcontent = `
                         <div class="media chat-item">
+                        <!--  <span class="chat-avatar">E</span> -->
                             <div class="media-body">
                                 <div class="chat-item-title">
-                                <img class="img-rounded img-responsive" src="/assets/img/elaina_avatar.png" height="48">
+                                <img class="img-rounded img-responsive" src="./assets/img/elaina_avatar.png" height="48">
                                     <span>Just now</span>
                                 </div>
                                 <div class="chat-item-body">
@@ -175,8 +176,8 @@ $(document).ready(function(){
             var username = localStorage.getItem("username");
             var contentmodule = $(".chat-module-body");
             var htmlcontent = `
-                <div class="media chat-item">
-                    <span class="chat-avatar">C</span>
+                <div class="media chat-item">  
+                <!-- <span class="chat-avatar">C</span> -->
                     <div class="media-body">
                         <div class="chat-item-title">
                         <img class="img-rounded img-responsive" src="/assets/img/elaina_avatar.png" height="48">
@@ -202,7 +203,7 @@ $(document).ready(function(){
                     var contentmodule = $(".chat-module-body");
                     var htmlcontent = `
                         <div class="media chat-item">
-                            <span class="chat-avatar">E</span>
+                        <!-- <span class="chat-avatar">E</span> -->
                             <div class="media-body">
                                 <div class="chat-item-title">
                                 <img class="img-rounded img-responsive" src="/assets/img/elaina_avatar.png" height="48">
