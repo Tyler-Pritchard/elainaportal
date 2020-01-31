@@ -62,7 +62,7 @@ $(document).ready(function(){
                         htmlcontent += `<span class="chat-avatar">${contents[i].sender.charAt(0).toUpperCase()}</span>`;
                     }
                     else {
-                        htmlcontent += `<img class="img-rounded img-responsive" src="./assets/custom/images/newElainaBlue2.png" height="48">`;
+                        htmlcontent += `<img class="img-rounded img-responsive" src="./assets/img/elaina_avatar.png" height="48">`;
                     }
                         
                     htmlcontent += `
@@ -104,7 +104,7 @@ $(document).ready(function(){
                 <!-- <span class="chat-avatar">C</span> -->
                     <div class="media-body">
                         <div class="chat-item-title">
-                        <img class="img-rounded img-responsive" src="./assets/assets/custom/images/newElainaBlue2.png" height="48">
+                        <img class="img-rounded img-responsive" src="./assets/img/elaina_avatar.png" height="48">
                         <span>Just now</span>
                         </div>
                         <div class="chat-item-body">
@@ -130,7 +130,7 @@ $(document).ready(function(){
                         <!--  <span class="chat-avatar">E</span> -->
                             <div class="media-body">
                                 <div class="chat-item-title">
-                                <img class="img-rounded img-responsive" src="./assets/assets/custom/images/newElainaBlue2.png" height="48">
+                                <img class="img-rounded img-responsive" src="./assets/img/elaina_avatar.png" height="48">
                                     <span>Just now</span>
                                 </div>
                                 <div class="chat-item-body">
