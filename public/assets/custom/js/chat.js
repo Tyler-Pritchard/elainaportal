@@ -104,7 +104,7 @@ $(document).ready(function(){
                 <!-- <span class="chat-avatar">C</span> -->
                     <div class="media-body">
                         <div class="chat-item-title">
-                        <img class="img-rounded img-responsive" src="/assets/img/elaina_avatar.png" height="48">
+                        <img class="img-rounded img-responsive" src="/assets/img/user.png" height="48">
                             <span>Just now</span>
                         </div>
                         <div class="chat-item-body">
