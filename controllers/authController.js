@@ -244,7 +244,7 @@ exports.charge = (req, res) => {
   let subType = content.subType;
   let stripeToken = content.stripeToken;
 
-  const stripe = require("stripe")("sk_test_1uJa0fbPKGPKmg2J0Qx5YGoL00ELsCvQUG");
+  const stripe = require("stripe")("pk_live_nogeuJJPdyThvpOn9KyUf1lb00GKQmTs45");
 
   let customer_id;
   let status;
