@@ -259,7 +259,7 @@ exports.charge = (req, res) => {
         const customer = await stripe.customers.create({
           email: email,
           description: 'Customer for ' + email
-          source= <src_token>
+          source= stripeToken
         });
         customer_id = customer['id'];
       }
