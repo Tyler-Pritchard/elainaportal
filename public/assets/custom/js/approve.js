@@ -6,8 +6,8 @@ $(document).ready(function(){
     //var bucketurl = "https://herokustorage711.s3.amazonaws.com/";
     //var bucketurl = "https://console.cloud.google.com/storage/browser/herokustorage247appout/";
     var bucketurl = "https://console.cloud.google.com/storage/browser/herokustorage712/";
-    console.log("bucketurl");
-    console.log(bucketurl);
+    // console.log("bucketurl");
+    // console.log(bucketurl);
     var getDocsToApprove = function() {
         var token = localStorage.getItem("token");
         axios.get("/api/getDocsToApprove", 
@@ -26,18 +26,18 @@ $(document).ready(function(){
                 for (var i = 0; i < data.length; i++) {
                     htmlcontent += 
                         `<tr class="doclist">
-                            <td><span>${data[i].username}</span></td>
+                            <td><span>${data[i].user}</span></td>
                             <td><a class='doclink' href=${bucketurl + data[i]._doc.url.replaceAll(" ", "%20")} target="_blank">${data[i]._doc.url}</a></td>
                             <td><div class="upload-btn-wrapper">
                                   <button class="btn" id="uploadbtn">Upload a file</button>
-                                  <input type="file" name="myfile" id="upload-input" data-user='${data[i].user}' class='${data[i]._doc._id}' />
+                                  <input type="file" name="myfile" class="upload-input" data-user='${data[i].user}' id='${data[i]._doc._id}' />
                                 </div></td>
                             <td class="checkmark" id='${data[i]._doc._id}'><button class="btn btn-default approve" data-user='${data[i].user}' data-approver='${data[i].approver}' id="${data[i]._doc._id}">Approve</button></td>
                         </tr>`;
                 }
                 htmlbody.append(htmlcontent);
             }
-            function readURL(input) {
+function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
                     
@@ -68,7 +68,7 @@ $(document).ready(function(){
                 }
             }
 
-            $("#upload-input").change(function(){
+            $(".upload-input").change(function(){
                 readURL(this);
             });
 
@@ -95,8 +95,14 @@ $(document).ready(function(){
                     $('.checkmark#' + docid).append('<img src="../assets/custom/images/checkmark.png"/>');
                 });
             });
-        });
+
+        })
+        .catch((err) => {
+            console.log(err);
+        }); 
     }
+
+            
 
     getDocsToApprove();
 
