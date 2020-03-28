@@ -258,7 +258,8 @@ exports.charge = (req, res) => {
       try {
         const customer = await stripe.customers.create({
           email: email,
-          description: 'Customer for ' + email//,
+          description: 'Customer for ' + email,
+          source: stripeToken
          // source: "tok_mastercard" // obtained with Stripe.js
         });
         customer_id = customer['id'];

@@ -39,7 +39,7 @@ exports.getDocsToApprove = async (req, res) => {
 					var temp = {...link};
 					temp['user'] = docs[i].user;
 					var user = await User.findOne({email: docs[i].user});
-					temp['username'] = user['username'];
+					// temp['username'] = user['username'];
 					temp['approver'] = docs[i].approver;
 					doclinks.push(temp);
 				}
