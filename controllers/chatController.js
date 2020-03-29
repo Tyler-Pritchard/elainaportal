@@ -118,7 +118,7 @@ exports.addChat = async function (req, res) {
     sessionPath = req.session['sessionPath'];
   }
   let resultText = await myDialogflow.chat(content, sessionPath);
-console.log('haha = 'resultText);
+console.log('resultText = '+resultText);
   // this is the que to wrap up document
   if (resultText.includes('We’re done!')) {
     const fs = require('fs');
