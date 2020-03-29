@@ -120,7 +120,8 @@ exports.addChat = async function (req, res) {
   let resultText = await myDialogflow.chat(content, sessionPath);
 
   // this is the que to wrap up document
-  if (resultText.includes('we’re done')) {
+  if (resultText.includes('We’re done!')) {
+    alert('1');
     const fs = require('fs');
 
     // Select Approver
@@ -132,7 +133,7 @@ exports.addChat = async function (req, res) {
     } else {
       approver = admins[getRandomInt(0, admins.length - 1)];
     }
-alert(approver);
+    alert(approver);
     var currentUser = await User.findOne({email: req.user.email});
 
     //var formArray = [ "Background Check Policy", "Family and Medical Leave Policy" ];
