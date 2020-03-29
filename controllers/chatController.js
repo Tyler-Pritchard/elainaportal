@@ -107,6 +107,7 @@ exports.publicChat = async function (req, res) {
 // checked if document was completed and needs to be approved
 // sends to approvers
 exports.addChat = async function (req, res) {
+
   let content = req.body.content;
   let sessionPath = null;
   if (req.session['sessionPath']) {
@@ -131,7 +132,7 @@ exports.addChat = async function (req, res) {
     } else {
       approver = admins[getRandomInt(0, admins.length - 1)];
     }
-
+alert(approver);
     var currentUser = await User.findOne({email: req.user.email});
 
     //var formArray = [ "Background Check Policy", "Family and Medical Leave Policy" ];
@@ -197,16 +198,16 @@ exports.addChat = async function (req, res) {
     };
     console.log(info);
     console.log("--------")
-    AWS.config.getCredentials(function(err) {
-      if (err) console.log(err.stack); // credentials not loaded
-      else {
-        console.log('ApprovedDocs');
+    // AWS.config.getCredentials(function(err) {
+    //   if (err) console.log(err.stack); // credentials not loaded
+    //   else {
+    //     console.log('ApprovedDocs');
 
-        console.log("Access Key:", AWS.config.credentials.accessKeyId);
-        console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-        //console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
-      }
-    });
+    //     console.log("Access Key:", AWS.config.credentials.accessKeyId);
+    //     console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+    //     //console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+    //   }
+    // });
 
     // Replace Template Fields with values in database
     var keys = Object.keys(info);
@@ -228,51 +229,53 @@ exports.addChat = async function (req, res) {
     //var doclink = req.user.accessCode + '-Background Check Policy IL.docx';
     var doclink = req.user.accessCode + '-' + intentKey + ' IL.docx';
     // var ep = new AWS.Endpoint('https://storage.googleapis.com');
-    var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712'  },endpoint: ep});
+    // var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712'  },endpoint: ep});
     // console.log('s3bucket.endpoint.hostname');
     // console.log(s3bucket.endpoint.hostname);
   }
-  if (s3bucket) {
-    //var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
-    s3bucket.createBucket(function () {
-      var params = {
-          Key: req.user.accessCode + '-' + intentKey + ' IL.docx', //file.name doesn't exist as a property
-          Body: converted
-      };
-      s3bucket.upload(params, function (err, data) {
-        if (err) {
-          console.log('ERROR MSG: ', err);
-          res.status(500).send(err);
-        } else {
-          console.log('Successfully uploaded data');
-          res.status(200).end();
-        }
-      });
-    });
 
-    var docapprove = await DocApprove.findOne({user: req.user.email})
-    if (!docapprove) {
-      docapprove = new DocApprove({
-        user: req.user.email,
-        approver: approver['email'],
-        link: [{
-          url: doclink,
-          status: "Not approved",
-          date: Date.now()
-        }]
-      });
-      docapprove.save();
-    }
-    else {
-      docapprove['link'].push({
-        url: doclink,
-        status: "Not approved",
-        date: Date.now()
-      });
-      docapprove.save();
-    }
 
-  }
+  // if (s3bucket) {
+  //   //var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
+  //   s3bucket.createBucket(function () {
+  //     var params = {
+  //         Key: req.user.accessCode + '-' + intentKey + ' IL.docx', //file.name doesn't exist as a property
+  //         Body: converted
+  //     };
+  //     s3bucket.upload(params, function (err, data) {
+  //       if (err) {
+  //         console.log('ERROR MSG: ', err);
+  //         res.status(500).send(err);
+  //       } else {
+  //         console.log('Successfully uploaded data');
+  //         res.status(200).end();
+  //       }
+  //     });
+  //   });
+
+  //   var docapprove = await DocApprove.findOne({user: req.user.email})
+  //   if (!docapprove) {
+  //     docapprove = new DocApprove({
+  //       user: req.user.email,
+  //       approver: approver['email'],
+  //       link: [{
+  //         url: doclink,
+  //         status: "Not approved",
+  //         date: Date.now()
+  //       }]
+  //     });
+  //     docapprove.save();
+  //   }
+  //   else {
+  //     docapprove['link'].push({
+  //       url: doclink,
+  //       status: "Not approved",
+  //       date: Date.now()
+  //     });
+  //     docapprove.save();
+  //   }
+
+  // }
 
   Chat.findOne({username: req.user.username}).then(result => {
 
