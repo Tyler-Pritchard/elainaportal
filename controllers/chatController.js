@@ -170,7 +170,10 @@ exports.addChat = async function (req, res) {
 
     //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     console.log('<strong>There are documents from ' + req + '</strong>');
-    var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'morrisc@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
+
+    var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'zamanbajwa22@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
+
+    // var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'morrisc@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
     //let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
 
     let myfiles = fs.readdirSync(__dirname + '/../template');  //,  ((err, files) => {
@@ -224,10 +227,10 @@ exports.addChat = async function (req, res) {
     var converted = htmlDocxJs.asBlob(data);
     //var doclink = req.user.accessCode + '-Background Check Policy IL.docx';
     var doclink = req.user.accessCode + '-' + intentKey + ' IL.docx';
-    var ep = new AWS.Endpoint('https://storage.googleapis.com');
+    // var ep = new AWS.Endpoint('https://storage.googleapis.com');
     var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712'  },endpoint: ep});
-    console.log('s3bucket.endpoint.hostname');
-    console.log(s3bucket.endpoint.hostname);
+    // console.log('s3bucket.endpoint.hostname');
+    // console.log(s3bucket.endpoint.hostname);
   }
   if (s3bucket) {
     //var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage711'}});
