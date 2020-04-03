@@ -14,7 +14,13 @@ const structjson = require('./structJson.js');
 var emailSender = require('./emailSender.js');
 
 var htmlDocxJs = require("html-docx-js");
+
+const uploadFile = require('../helpers/helpers');
+
+
 const AWS = require('aws-sdk');
+
+
 
 
 var request = require('request')
@@ -107,7 +113,7 @@ exports.publicChat = async function (req, res) {
 // checked if document was completed and needs to be approved
 // sends to approvers
 exports.addChat = async function (req, res) {
-
+try {
   let content = req.body.content;
   let sessionPath = null;
   if (req.session['sessionPath']) {
@@ -120,7 +126,7 @@ exports.addChat = async function (req, res) {
   let resultText = await myDialogflow.chat(content, sessionPath);
 console.log('resultText = '+resultText);
   // this is the que to wrap up document
-  if (resultText.includes('We’re done!')) {
+  if (resultText.includes('we’re done')) {
     const fs = require('fs');
 
     // Select Approver
@@ -172,10 +178,10 @@ console.log('resultText = '+resultText);
     //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
     console.log('<strong>There are documents from ' + req + '</strong>');
 
-    var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'zamanbajwa22@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
+    var emailResult = await emailSender.sendEmail('spoon.jeremy@gmail.com', 'zamanbajwa22@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
 
     // var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'morrisc@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
-    //let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
+    // let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
 
     let myfiles = fs.readdirSync(__dirname + '/../template');  //,  ((err, files) => {
 
@@ -185,8 +191,8 @@ console.log('resultText = '+resultText);
       console.log( happystr ); //+= myfiles[i].toString();
     }
 
-    //let data = fs.readFileSync(__dirname + '/../template/' + intentKey.replace(/ /g, "")  + 'IL.htm', 'utf8');
-    let data = fs.readFileSync(__dirname + '/../template/' + intentKey + ' IL.htm', 'utf8');
+    // let data = fs.readFileSync(__dirname + '/../template/' + intentKey.replace(/ /g, "")  + 'IL.htm', 'utf8');
+    let data = fs.readFileSync(__dirname + '/../template/' + intentKey + ' IL.html', 'utf8');
     console.log("__dirname:");
     console.log(__dirname);
     console.log('data.length');
@@ -198,40 +204,71 @@ console.log('resultText = '+resultText);
     };
     console.log(info);
     console.log("--------")
-    // AWS.config.getCredentials(function(err) {
-    //   if (err) console.log(err.stack); // credentials not loaded
-    //   else {
-    //     console.log('ApprovedDocs');
-
-    //     console.log("Access Key:", AWS.config.credentials.accessKeyId);
-    //     console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-    //     //console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
-    //   }
-    // });
 
     // Replace Template Fields with values in database
     var keys = Object.keys(info);
     for (k in keys.slice(0,keys.length)){
       console.log(keys[k]+":"+info[keys[k]]);
       data = data.replaceAll('d.'+keys[k], info[keys[k]]);
-      //console.log(data);
+      console.log(data);
     }
 
     console.log('data.length');
     console.log(data.length);
 
-    //data = data.replaceAll('d.employeeName', info['employeeName']);
-    //console.log(data);
-    //data = data.replaceAll('d.requireMayRequire', info['requireMayRequire']);
-    //data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
-    //data = data.replaceAll('d.position', info['position']);
+    data = data.replaceAll('d.employeeName', info['employeeName']);
+    data = data.replaceAll('d.requireMayRequire', info['requireMayRequire']);
+    data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
+    data = data.replaceAll('d.position', info['position']);
+    console.log(data);
     var converted = htmlDocxJs.asBlob(data);
-    //var doclink = req.user.accessCode + '-Background Check Policy IL.docx';
-    var doclink = req.user.accessCode + '-' + intentKey + ' IL.docx';
-    // var ep = new AWS.Endpoint('https://storage.googleapis.com');
-    // var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712'  },endpoint: ep});
-    // console.log('s3bucket.endpoint.hostname');
-    // console.log(s3bucket.endpoint.hostname);
+
+    fileName = req.user.accessCode + '-' + intentKey + ' IL.docx';
+    const documentPath = `${__dirname}/../template/test_files/${fileName}`;
+  await new Promise((resolve, reject) => {
+    fs.writeFile(documentPath, converted, err => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve();
+    });
+  });
+
+  var docapprove = await DocApprove.findOne({user: req.user.email})
+    if (!docapprove) {
+      docapprove = new DocApprove({
+        user: req.user.email,
+        approver: approver['email'],
+        link: [{
+          url: fileName,
+          status: "Not approved",
+          date: Date.now()
+        }]
+      });
+      docapprove.save();
+    }
+    else {
+      docapprove['link'].push({
+        url: fileName,
+        status: "Not approved",
+        date: Date.now()
+      });
+      docapprove.save();
+    }
+    // saveAs(converted, 'zmztets.docx');
+    // const fileUrl = await uploadFile(converted);
+
+    // console.log(fileUrl);
+
+    // fs.writeFile("template/zaman_result.docs", converted, function(err) {
+    // if(err) {
+    //   return console.log(err);
+    // }
+    //   console.log("The file was saved!");
+    // });
+
+
   }
 
 
@@ -253,27 +290,7 @@ console.log('resultText = '+resultText);
   //     });
   //   });
 
-  //   var docapprove = await DocApprove.findOne({user: req.user.email})
-  //   if (!docapprove) {
-  //     docapprove = new DocApprove({
-  //       user: req.user.email,
-  //       approver: approver['email'],
-  //       link: [{
-  //         url: doclink,
-  //         status: "Not approved",
-  //         date: Date.now()
-  //       }]
-  //     });
-  //     docapprove.save();
-  //   }
-  //   else {
-  //     docapprove['link'].push({
-  //       url: doclink,
-  //       status: "Not approved",
-  //       date: Date.now()
-  //     });
-  //     docapprove.save();
-  //   }
+    
 
   // }
 
@@ -305,6 +322,10 @@ console.log('resultText = '+resultText);
     res.json({ status: "error" });
   })
   return res.json({ status: "success", data: resultText });
+}catch (error) {
+  console.log(error)
+}
+  
 };
 
 // Display list of all books.

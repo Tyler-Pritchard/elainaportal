@@ -32,6 +32,9 @@ $(document).ready(function(){
                                   <button class="btn" id="uploadbtn">Upload a file</button>
                                   <input type="file" name="myfile" class="upload-input" data-user='${data[i].user}' id='${data[i]._doc._id}' />
                                 </div></td>
+                            <td>
+                                <a class='doclink' href="/download_document/${data[i]._doc.url}">Download</a>
+                            </td>
                             <td class="checkmark" id='${data[i]._doc._id}'><button class="btn btn-default approve" data-user='${data[i].user}' data-approver='${data[i].approver}' id="${data[i]._doc._id}">Approve</button></td>
                         </tr>`;
                 }

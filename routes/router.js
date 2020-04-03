@@ -67,6 +67,13 @@ router.get("/terms", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/terms.html'));
 });
 
+//downloading docs file
+router.get('/download_document/:file(*)',(req, res) => {
+  var file = req.params.file;
+  var fileLocation = path.join('template/test_files',file);
+  console.log(fileLocation);
+  res.download(fileLocation, file); 
+});
 // Doc list
 
 router.get("/api/getDocsNotApproved", docController.getDocsNotApproved);
