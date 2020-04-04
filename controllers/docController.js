@@ -9,6 +9,20 @@ var emailSender = require('./emailSender.js');
 const AWS = require('aws-sdk');
 AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 
+
+const {uploadFile,getPublicUrl} = require('../helpers/helpers');
+var docxConverter = require('docx-pdf');
+const word2pdf = require('word2pdf');
+// const libre = require('libreoffice-convert');
+
+const {Storage} = require('@google-cloud/storage');
+var path = require('path');
+const gc = new Storage({
+  keyFilename: path.join(__dirname, '../configer/tdt-main-66a7adf662e5.json'),
+  projectId: 'tdt-main',
+});
+
+const bucket = gc.bucket('tdt_main_deep_bucket');
 /**
  * Send a query to the dialogflow agent, and return the query result.
  * @param {string} projectId The project to be used
@@ -292,18 +306,44 @@ exports.approveDoc = async (req, res) => {
   let current = req.user.email;
   let user = req.body.content.user;
   let docid= req.body.content.docid;
-	var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
-		secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
-		s3BucketEndpoint: 'https://storage.googleapis.com'
+  let doc_name= req.body.content.doc_name;
+  console.log(doc_name);
+	const extend = '.pdf'
+	const enterPath = path.join(__dirname, `/../template/docs_files/${doc_name}`);
+	const outputPath = path.join(__dirname, `/../template/docs_files/729420-Background Check Policy IL${extend}`);
+
+	// const enterPathFile = fs.readFileSync(enterPath);
+
+	bucket.upload(enterPath, function(err, file) {
+	    if (err) throw new Error(err);
 	});
-	AWS.config.getCredentials(function(err) {
-		if (err) console.log(err.stack); // credentials not loaded
-		else console.log("Access Key:", AWS.config.credentials.accessKeyId);
-	console.log('ApprovedDocs');
-	console.log("Access Key:", AWS.config.credentials.accessKeyId);
-	console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
-	console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
-	});
+
+// libre.convert(enterPathFile, extend, undefined, (err, done) => {
+//     if (err) {
+//       console.log(`Error converting file: ${err}`);
+//     }
+    
+//     // Here in done you have pdf file which you can save or transfer in another stream
+//     fs.writeFileSync(outputPath, done);
+// });
+//   docxConverter('template/docs_files/729420-Background Check Policy IL.docx','./zaman.pdf',function(err,result){
+//   if(err){
+//     console.log(err);
+//   }
+//   console.log('result'+result);
+// });
+	// var config = new AWS.Config({accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+	// 	secretAccessKey: 'S3kLDS9lIve9mYzYkKC1a/SQy0/d1OjBUkMY4wck',
+	// 	s3BucketEndpoint: 'https://storage.googleapis.com'
+	// });
+	// AWS.config.getCredentials(function(err) {
+	// 	if (err) console.log(err.stack); // credentials not loaded
+	// 	else console.log("Access Key:", AWS.config.credentials.accessKeyId);
+	// console.log('ApprovedDocs');
+	// console.log("Access Key:", AWS.config.credentials.accessKeyId);
+	// console.log("Secret Access Key:", AWS.config.credentials.secretAccessKey);
+	// console.log("s3BuscketEndpoint:", AWS.config.s3BucketEndpoint);
+	// });
 
 
 

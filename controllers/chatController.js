@@ -15,11 +15,6 @@ var emailSender = require('./emailSender.js');
 
 var htmlDocxJs = require("html-docx-js");
 
-const uploadFile = require('../helpers/helpers');
-
-
-const AWS = require('aws-sdk');
-
 
 
 
@@ -224,7 +219,7 @@ console.log('resultText = '+resultText);
     var converted = htmlDocxJs.asBlob(data);
 
     fileName = req.user.accessCode + '-' + intentKey + ' IL.docx';
-    const documentPath = `${__dirname}/../template/test_files/${fileName}`;
+    const documentPath = `${__dirname}/../template/docs_files/${fileName}`;
   await new Promise((resolve, reject) => {
     fs.writeFile(documentPath, converted, err => {
       if (err) {

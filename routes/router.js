@@ -70,7 +70,7 @@ router.get("/terms", (req, res, next) => {
 //downloading docs file
 router.get('/download_document/:file(*)',(req, res) => {
   var file = req.params.file;
-  var fileLocation = path.join('template/test_files',file);
+  var fileLocation = path.join('template/docs_files',file);
   console.log(fileLocation);
   res.download(fileLocation, file); 
 });

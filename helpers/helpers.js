@@ -5,7 +5,7 @@ const gc = new Storage({
   projectId: 'tdt-main',
 });
 
-const bucket = gc.bucket('tdt_main_deep_bucket') // should be your bucket name
+const bucket = gc.bucket('tdt_main_deep_bucket'); // should be your bucket name
 
 /**
  *
@@ -16,8 +16,13 @@ const bucket = gc.bucket('tdt_main_deep_bucket') // should be your bucket name
  *   "originalname" and "buffer" as keys
  */
 
- exports.uploadFile = (file) => new Promise((resolve, reject) => {
-  console.log('in helper function');
+exports.uploadFile = function(file) {
+    // clean it and return
+    console.log(bucket);
+}
+
+ // exports.uploadFile = (file) => new Promise((resolve, reject) => {
+ //  console.log(bucket);
   // const { originalname, buffer } = file
 
   // const blob = bucket.file('testingzaman')
@@ -34,7 +39,7 @@ const bucket = gc.bucket('tdt_main_deep_bucket') // should be your bucket name
   //   reject(`Unable to upload file, something went wrong`)
   // })
   // .end(buffer)
-})
+// })
 
 
  exports.getPublicUrl = (bucketName, fileName) => `https://storage.googleapis.com/${bucketName}/${fileName}`;

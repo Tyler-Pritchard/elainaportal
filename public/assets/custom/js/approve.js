@@ -33,9 +33,9 @@ $(document).ready(function(){
                                   <input type="file" name="myfile" class="upload-input" data-user='${data[i].user}' id='${data[i]._doc._id}' />
                                 </div></td>
                             <td>
-                                <a class='doclink' href="/download_document/${data[i]._doc.url}">Download</a>
+                                <a class='btn' id="uploadbtn" href="/download_document/${data[i]._doc.url}">Download</a>
                             </td>
-                            <td class="checkmark" id='${data[i]._doc._id}'><button class="btn btn-default approve" data-user='${data[i].user}' data-approver='${data[i].approver}' id="${data[i]._doc._id}">Approve</button></td>
+                            <td class="checkmark" id='${data[i]._doc._id}'><button class="btn btn-default approve" data-user='${data[i].user}' doc_name='${data[i]._doc.url}' data-approver='${data[i].approver}' id="${data[i]._doc._id}">Approve</button></td>
                         </tr>`;
                 }
                 htmlbody.append(htmlcontent);
@@ -79,11 +79,13 @@ function readURL(input) {
                 var user = $(this).attr('data-user');
                 var approver = $(this).attr('data-approver');
                 var docid = $(this).attr('id');
+                var doc_name = $(this).attr('doc_name');
                 console.log(approver, docid);
                 var content = {
                     user: user,
                     approver: approver,
-                    docid: docid
+                    docid : docid,
+                    doc_name : doc_name
                 };
                 axios.post("/api/approveDoc", {
                     content: content
