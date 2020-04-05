@@ -4,7 +4,7 @@ $(document).ready(function(){
       return target.replace(new RegExp(search, 'g'), replacement);
     };
     //var bucketurl = "https://herokustorage711.s3.amazonaws.com/";
-    var bucketurl = "https://console.cloud.google.com/storage/browser/herokustorage712/";
+    var bucketurl = "https://storage.googleapis.com/tdt_main_deep_bucket/";
     console.log("bucketurl");
     console.log(bucketurl);
     var getDocsToApprove = function() {
@@ -26,7 +26,7 @@ $(document).ready(function(){
                     htmlcontent += 
                         `<tr>
                             <td><span class="docname">${data[i]._doc.url}</span></td>
-                            <td><a class='doclink btn btn-default blue' href=${bucketurl + data[i]._doc.url.replaceAll(" ", "%20")} target="_blank">Download</a></td>
+                            <td><a class='doclink btn btn-default blue' href=${bucketurl + data[i]._doc.url.replace("docx", "pdf").replaceAll(" ", "%20")} target="_blank">Download</a></td>
                         </tr>`;
                 }
                 htmlbody.append(htmlcontent);

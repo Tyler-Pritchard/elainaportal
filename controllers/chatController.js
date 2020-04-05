@@ -14,7 +14,7 @@ const structjson = require('./structJson.js');
 var emailSender = require('./emailSender.js');
 
 var htmlDocxJs = require("html-docx-js");
-
+var pdf = require('html-pdf');
 
 
 
@@ -170,10 +170,10 @@ console.log('resultText = '+resultText);
     console.log("info.length:");
     //console.log(info.keys().length);
 
-    //await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
-    console.log('<strong>There are documents from ' + req + '</strong>');
+    await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
+    // console.log('<strong>There are documents from ' + req + '</strong>');
 
-    var emailResult = await emailSender.sendEmail('spoon.jeremy@gmail.com', 'zamanbajwa22@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
+    // var emailResult = await emailSender.sendEmail('spoon.jeremy@gmail.com', 'zamanbajwa22@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
 
     // var emailResult = await emailSender.sendEmail('chukhman@uic.edu', 'morrisc@gmail.com', 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from : + req.user.username + </strong>');
     // let data = fs.readFileSync(__dirname + '/../template/test.htm', 'utf8');
@@ -215,6 +215,18 @@ console.log('resultText = '+resultText);
     data = data.replaceAll('d.requireMayRequire', info['requireMayRequire']);
     data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
     data = data.replaceAll('d.position', info['position']);
+
+
+    //pdf conversion here
+    var options = { format: 'Letter' };
+    pdf_fileName = 'template/pdf_files/'+req.user.accessCode + '-' + intentKey + ' IL.pdf';
+pdf.create(data, options).toFile(pdf_fileName, function(err, res) {
+  if (err) return console.log(err);
+  console.log(res); // { filename: '/app/businesscard.pdf' }
+});
+
+
+    //docx conversion here
     console.log(data);
     var converted = htmlDocxJs.asBlob(data);
 

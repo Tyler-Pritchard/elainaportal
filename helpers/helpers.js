@@ -42,4 +42,4 @@ exports.uploadFile = function(file) {
 // })
 
 
- exports.getPublicUrl = (bucketName, fileName) => `https://storage.googleapis.com/${bucketName}/${fileName}`;
+ exports.getPublicUrl = (fileName) => `https://storage.googleapis.com/tdt_main_deep_bucket/${fileName}`;
