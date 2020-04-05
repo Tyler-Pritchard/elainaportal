@@ -26,7 +26,7 @@ $(document).ready(function(){
                     htmlcontent += 
                         `<tr>
                             <td><span class="docname">${data[i]._doc.url.replace("docx", "pdf")}</span></td>
-                            <td><a class='doclink btn btn-default blue' href=${bucketurl + data[i]._doc.url.replace("docx", "pdf")} download=${data[i]._doc.url.replace("docx", "pdf")} target="_blank">Download</a></td>
+                            <td><a class='doclink btn btn-default blue' href=${bucketurl + data[i]._doc.url.replace("docx", "pdf").replaceAll(" ", "%20")} download='${data[i]._doc.url.replace("docx", "pdf")}' target='_blank'>Download</a></td>
                         </tr>`;
                 }
                 htmlbody.append(htmlcontent);
