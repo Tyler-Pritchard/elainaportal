@@ -230,7 +230,7 @@ pdf.create(data, options).toFile(pdf_fileName, function(err, res) {
     console.log(data);
     var converted = htmlDocxJs.asBlob(data);
 
-    fileName = req.user.accessCode + '-' + intentKey + ' IL.docx';
+    fileName = Date.now()+'-'+req.user.accessCode + '-' + intentKey + ' IL.docx';
     const documentPath = `${__dirname}/../template/docs_files/${fileName}`;
   await new Promise((resolve, reject) => {
     fs.writeFile(documentPath, converted, err => {
