@@ -35,7 +35,7 @@ $(document).ready(function(){
                             <td>
                                 <a class='btn' id="uploadbtn" href="/download_document/${data[i]._doc.url}">Download</a>
                             </td>
-                            <td class="checkmark" id='${data[i]._doc._id}'><button class="btn btn-default approve" data-user='${data[i].user}' doc_name='${data[i]._doc.url}' data-approver='${data[i].approver}' id="${data[i]._doc._id}">Approve</button></td>
+                            <td class="checkmark${data[i]._doc._id}"><button class="btn btn-default approve" data-user='${data[i].user}' doc_name='${data[i]._doc.url}' data-approver='${data[i].approver}' id="${data[i]._doc._id}">Approve</button></td>
                         </tr>`;
                 }
                 htmlbody.append(htmlcontent);
@@ -96,8 +96,8 @@ function readURL(input) {
                     }
                 })
                 .then((res) => {
-                    $('.checkmark#' + docid).empty();
-                    $('.checkmark#' + docid).append('<img src="../assets/custom/images/checkmark.png"/>');
+                    $('.checkmark' + docid).empty();
+                    $('.checkmark' + docid).append('<img src="../assets/custom/images/checkmark.png"/>');
                 });
             });
 
