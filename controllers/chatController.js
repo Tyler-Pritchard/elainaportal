@@ -216,10 +216,10 @@ console.log('resultText = '+resultText);
     data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
     data = data.replaceAll('d.position', info['position']);
 
-
+const date = Date.now();
     //pdf conversion here
     var options = { format: 'Letter' };
-    pdf_fileName = 'template/pdf_files/'+Date.now()+'-'+req.user.accessCode + '-' + intentKey + ' IL.pdf';
+    pdf_fileName = 'template/pdf_files/'+date+'-'+req.user.accessCode + '-' + intentKey + ' IL.pdf';
 pdf.create(data, options).toFile(pdf_fileName, function(err, res) {
   if (err) return console.log(err);
   console.log(res); // { filename: '/app/businesscard.pdf' }
@@ -230,7 +230,7 @@ pdf.create(data, options).toFile(pdf_fileName, function(err, res) {
     console.log(data);
     var converted = htmlDocxJs.asBlob(data);
 
-    fileName = Date.now()+'-'+req.user.accessCode + '-' + intentKey + ' IL.docx';
+    fileName = date+'-'+req.user.accessCode + '-' + intentKey + ' IL.docx';
     const documentPath = `${__dirname}/../template/docs_files/${fileName}`;
   await new Promise((resolve, reject) => {
     fs.writeFile(documentPath, converted, err => {
