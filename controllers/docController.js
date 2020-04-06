@@ -337,11 +337,11 @@ if (fs.existsSync(pdf_file_path)) {
 		console.log(docname);
   	docs.save();
 
-  	await emailSender.sendEmail('spoon.jeremy@gmail.com', user, "There are new documents approved from Deeplaw", 'test', '<strong>' + docname + ' is approved. Please download it.</strong>');
+  	// await emailSender.sendEmail('spoon.jeremy@gmail.com', user, "There are new documents approved from Deeplaw", 'test', '<strong>' + docname + ' is approved. Please download it.</strong>');
 		
-  }
-  if (fs.existsSync(pdf_file_path)) {
-  	fs.unlinkSync(pdf_file_path);
+	  if (fs.existsSync(pdf_file_path)) {
+	  	fs.unlinkSync(pdf_file_path);
+	  }
   }
   return res.json({ status: "success" });
 };
