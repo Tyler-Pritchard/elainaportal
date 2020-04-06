@@ -219,7 +219,7 @@ console.log('resultText = '+resultText);
 
     //pdf conversion here
     var options = { format: 'Letter' };
-    pdf_fileName = 'template/pdf_files/'+req.user.accessCode + '-' + intentKey + ' IL.pdf';
+    pdf_fileName = 'template/pdf_files/'+Date.now()+'-'+req.user.accessCode + '-' + intentKey + ' IL.pdf';
 pdf.create(data, options).toFile(pdf_fileName, function(err, res) {
   if (err) return console.log(err);
   console.log(res); // { filename: '/app/businesscard.pdf' }
