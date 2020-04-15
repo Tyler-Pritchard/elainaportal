@@ -13,8 +13,6 @@ AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ
 const {uploadFile,getPublicUrl} = require('../helpers/helpers');
 const libre = require('libreoffice-convert');
 var textract = require('textract');
-// const word2pdf = require('word2pdf-promises');
-const word2pdf = require('word2pdf');
 
 const {Storage} = require('@google-cloud/storage');
 var path = require('path');
