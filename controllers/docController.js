@@ -13,6 +13,8 @@ AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ
 const {uploadFile,getPublicUrl} = require('../helpers/helpers');
 const libre = require('libreoffice-convert');
 var textract = require('textract');
+// const word2pdf = require('word2pdf-promises');
+const word2pdf = require('word2pdf');
 
 const {Storage} = require('@google-cloud/storage');
 var path = require('path');
@@ -64,63 +66,55 @@ exports.getDocsToApprove = async (req, res) => {
   return res.json({ status: "success", data: doclist });
 };
 
+
+var docs_file_path;
+var pdf_file_path;
 exports.fileUpload = async (req, res) => {
   var form = new formidable.IncomingForm();
   let newurl = "";
-
 
   form.parse(req, async (err, fields, files) => {
   	var id = fields['id'];
   	let current = req.user.email;
   	let user = fields['user'];
+  	var doc_name = fields['doc_name'];
 
-	  var docs = await Doc.findOne({approver: current, user: user});
-
-	  let docname = "";
-
-	  if (docs) {
-	  	var links = docs.link;
-	  	for (var i = links.length - 1; i >= 0; i--) {
-	  		if (String(links[i]['_id']) == id) {
-					links[i]['url'] = newurl;
-				}
-	  	}
-	  	docs.link = links;
-			
-	  	docs.save();
-	  }
+	  
+  let document_name = doc_name.split(".docx");
+  console.log(document_name[0]);
+	docs_file_path = path.join(__dirname, `/../template/docs_files/${doc_name}`);
+	pdf_file_path = path.join(__dirname, `/../template/pdf_files/${document_name[0]}.pdf`);
 
   });
+	
+	if (fs.existsSync(docs_file_path)) {
+	  	fs.unlinkSync(docs_file_path);
+	}
+
+	if (fs.existsSync(pdf_file_path)) {
+	  	fs.unlinkSync(pdf_file_path);
+	}
 
   form.on('file', function (name, file){
-    //console.log(file)
-      // file.path = __dirname + '/../public/docs/' + file.name;
     fs.readFile(file.path, function (err, data) {
-		var ep = new AWS.Endpoint('https://storage.googleapis.com');
-		//var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage247appout'  },endpoint: ep});
-		var s3bucket = new AWS.S3({params: {Bucket: 'herokustorage712'  },endpoint: ep});
-      console.log(s3bucket.endpoint.hostname);
+	  	fs.writeFile(docs_file_path, data, function (err) {
+		  if (err) return console.log(err);
+		  console.log('Hello World > helloworld.txt');
+		});
+    	libre.convert(data, '.pdf', undefined, (err, done) => {
+		    if (err) {
+		      console.log(`Error converting file: ${err}`);
+		    }
+		    
+		    // Here in done you have pdf file which you can save or transfer in another stream
+		    fs.writeFileSync(pdf_file_path, done);
+		});
 
-      s3bucket.createBucket(function () {
-        var params = {
-            Key: file.name, //file.name doesn't exist as a property
-            Body: data
-        };
-        s3bucket.upload(params, function (err, data) {
-            if (err) {
-                console.log('ERROR MSG: ', err);
-                // res.status(500).send(err);
-            } else {
-                console.log('Successfully uploaded data');
-                // res.status(200).end();
-            }
-        });
-      });
-    });
-    newurl = file.name;
+
   });
 
   res.status(200).send('');
+});
 };
 
 exports.getApprovedDocs = async (req, res) => {

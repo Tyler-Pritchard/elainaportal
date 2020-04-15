@@ -29,11 +29,11 @@ $(document).ready(function(){
                             <td><span>${data[i].user}</span></td>
                             <td><a class='doclink' href=${bucketurl + data[i]._doc.url.replaceAll(" ", "%20")} target="_blank">${data[i]._doc.url}</a></td>
                             <td><div class="upload-btn-wrapper">
-                                  <button class="btn" id="uploadbtn">Upload a file</button>
-                                  <input type="file" name="myfile" class="upload-input" data-user='${data[i].user}' id='${data[i]._doc._id}' />
+                                  <button class="btn" id="uploadbtn${data[i]._doc._id}">Upload a file</button>
+                                  <input type="file" name="myfile" class="upload-input" data-user='${data[i].user}' doc_name='${data[i]._doc.url}' data-id='${data[i]._doc._id}' />
                                 </div></td>
                             <td>
-                                <a class='btn' id="uploadbtn" href="/download_document/${data[i]._doc.url}">Download</a>
+                                <a  href="/download_document/${data[i]._doc.url}"><button class="btn btn-default" >Download</button></a>
                             </td>
                             <td class="checkmark${data[i]._doc._id}"><button class="btn btn-default approve" data-user='${data[i].user}' doc_name='${data[i]._doc.url}' data-approver='${data[i].approver}' id="${data[i]._doc._id}">Approve</button></td>
                         </tr>`;
@@ -47,9 +47,11 @@ function readURL(input) {
                     reader.onload = (e) => {
                         var formData = new FormData();
                         formData.append('file', input.files[0]);
-                        var className = input.getAttribute('class');
+                        var doc_id = input.getAttribute('data-id');
+                        var doc_name = input.getAttribute('doc_name');
                         var user = input.getAttribute('data-user');
-                        formData.append('id', className);
+                        formData.append('id', doc_id);
+                        formData.append('doc_name', doc_name);
                         formData.append('user', user);
                         $.ajax({
                             headers: {
@@ -62,6 +64,8 @@ function readURL(input) {
                             cache: false,
                             processData: false,
                             success: (response) => {
+                                $('#uploadbtn'+ doc_id).empty();
+                    $('#uploadbtn' + doc_id).append('<img src="../assets/custom/images/checkmark.png"/>');
                                 getDocsToApprove();
                             },
                         });
