@@ -12,7 +12,6 @@ AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ
 
 const {uploadFile,getPublicUrl} = require('../helpers/helpers');
 const libre = require('libreoffice-convert');
-var textract = require('textract');
 
 const {Storage} = require('@google-cloud/storage');
 var path = require('path');
@@ -97,7 +96,6 @@ exports.fileUpload = async (req, res) => {
     fs.readFile(file.path, function (err, data) {
 	  	fs.writeFile(docs_file_path, data, function (err) {
 		  if (err) return console.log(err);
-		  console.log('Hello World > helloworld.txt');
 		});
     	libre.convert(data, '.pdf', undefined, (err, done) => {
 		    if (err) {
