@@ -163,6 +163,11 @@ console.log('resultText = '+resultText);
       }
     });
 
+    console.log('=========intentKey======================');
+    console.log(intentKey);
+    console.log('=========intentValue======================');
+    console.log(intentValue);
+
     var info = currentUser[intentValue]; //:s[Object.keys(intents)[1]]]; //'Background_Check_Policy'];
 
     console.log("typeof info:");
@@ -207,14 +212,21 @@ console.log('resultText = '+resultText);
       data = data.replaceAll('d.'+keys[k], info[keys[k]]);
       console.log(data);
     }
-
-    console.log('data.length');
-    console.log(data.length);
-
-    data = data.replaceAll('d.employeeName', info['employeeName']);
-    data = data.replaceAll('d.requireMayRequire', info['requireMayRequire']);
-    data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
-    data = data.replaceAll('d.position', info['position']);
+    if(intentValue == 'Background_Check_Policy' ){
+      data = data.replaceAll('d.employeeName', info['employeeName']);
+      data = data.replaceAll('d.requireMayRequire', info['requireMayRequire']);
+      data = data.replaceAll('d.humanResourcesDepartmentName', info['humanResourcesDepartmentName']);
+      data = data.replaceAll('d.position', info['position']);
+    }
+    if(intentValue == 'Dress_Code_Policy' ){
+      data = data.replaceAll('d.employeeName', info['employeeName']);
+    }
+    if(intentValue == 'Equal_Opportunity_Employment_Policy' ){
+      data = data.replaceAll('d.employeeName', info['employername']);
+      data = data.replaceAll('d.departmentName', info['accommadation']);
+      // data = data.replaceAll('d.employeeName', info['complaints']);
+      data = data.replaceAll('d.positionDepartmentName', info['complainttwo']);
+    }
 
 const date = Date.now();
     //pdf conversion here
