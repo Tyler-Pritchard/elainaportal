@@ -230,9 +230,10 @@ console.log('resultText = '+resultText);
     if(intentValue == 'Family_Medical_Leave_Policy' ){
       data = data.replaceAll('d.employeName', info['employername']);
       data = data.replaceAll('d.thehumanResourcesDepartmentName', info['conatct']);
-      data = data.replaceAll('d.mayWillBeRequired', info['formsdepartment']);
+      data = data.replaceAll('d.humanResourcesDepartmentName', info['formsdepartment']);
+      data = data.replaceAll('d.mayWillBeRequired', info['permitrequired']);
       data = data.replaceAll('d.position', info['changeposition']);
-      data = data.replaceAll('d.requiredFrequency', info['permitrequired']);
+      data = data.replaceAll('d.requiredFrequency', info['statuscontact']);
       data = data.replaceAll('d.paymentMethod', info['paymentmethod']);
     }
 
