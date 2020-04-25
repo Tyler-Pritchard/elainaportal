@@ -227,6 +227,14 @@ console.log('resultText = '+resultText);
       // data = data.replaceAll('d.employeeName', info['complaints']);
       data = data.replaceAll('d.positionDepartmentName', info['complainttwo']);
     }
+    if(intentValue == 'Family_Medical_Leave_Policy' ){
+      data = data.replaceAll('d.employeName', info['employername']);
+      data = data.replaceAll('d.thehumanResourcesDepartmentName', info['conatct']);
+      data = data.replaceAll('d.mayWillBeRequired', info['formsdepartment']);
+      data = data.replaceAll('d.position', info['changeposition']);
+      data = data.replaceAll('d.requiredFrequency', info['permitrequired']);
+      data = data.replaceAll('d.paymentMethod', info['paymentmethod']);
+    }
 
 const date = Date.now();
     //pdf conversion here
