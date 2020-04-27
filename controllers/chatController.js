@@ -151,6 +151,7 @@ console.log('resultText = '+resultText);
     intents.set("Operating Agreement Multi-Member", "Operating_Agreement_Multi_Member")
     intents.set("Mutual Non-Disclosure Agreement", "Mutual_Non_Disclosure_Agreement")
     intents.set("Corporate Bylaws", "Corporate_Bylaws")
+    intents.set("US Trademark Search and Registration Questionnaire", "US_Trademark_Search_and_Registration_Questionnaire")
 
     var intentKey = "Background Check Policy";
     var intentValue = "Background_Check_Policy";
@@ -227,6 +228,7 @@ console.log('resultText = '+resultText);
       // data = data.replaceAll('d.employeeName', info['complaints']);
       data = data.replaceAll('d.positionDepartmentName', info['complainttwo']);
     }
+
     if(intentValue == 'Family_Medical_Leave_Policy' ){
       data = data.replaceAll('d.employeName', info['employername']);
       data = data.replaceAll('d.thehumanResourcesDepartmentName', info['conatct']);
@@ -236,6 +238,21 @@ console.log('resultText = '+resultText);
       data = data.replaceAll('d.requiredFrequency', info['statuscontact']);
       data = data.replaceAll('d.paymentMethod', info['paymentmethod']);
     }
+
+    // if(intentValue == 'Mutual_Non_Disclosure_Agreement' ){
+    //   data = data.replaceAll('d.date', info['employername']);
+    //   data = data.replaceAll('d.partyone', info['conatct']);
+    //   data = data.replaceAll('d.partyonestate', info['formsdepartment']);
+    //   data = data.replaceAll('d.partyoneentity', info['permitrequired']);
+    //   data = data.replaceAll('d.partyonecounty', info['permitrequired']);
+    //   data = data.replaceAll('d.partyoneaddress', info['changeposition']);
+      
+    //   data = data.replaceAll('d.partytwo', info['statuscontact']);
+    //   data = data.replaceAll('d.partytwostate', info['paymentmethod']);
+    //   data = data.replaceAll('d.partytwoentity', info['paymentmethod']);
+    //   data = data.replaceAll('d.partytwoaddress', info['paymentmethod']);
+    //   data = data.replaceAll('d.purpose', info['paymentmethod']);
+    // }
 
 const date = Date.now();
     //pdf conversion here
