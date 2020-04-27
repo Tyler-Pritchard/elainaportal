@@ -239,6 +239,37 @@ console.log('resultText = '+resultText);
       data = data.replaceAll('d.paymentMethod', info['paymentmethod']);
     }
 
+    if(intentValue == 'US_Trademark_Search_and_Registration_Questionnaire' ){
+
+
+//       data = data.replaceAll('d.usbusiness', info['']);
+//       data = data.replaceAll('d.firstuse', info['']);
+//       data = data.replaceAll('d.usematerials', info['']);
+        
+// socialmedia 
+// domain   
+// intend  
+
+
+      data = data.replaceAll('d.markchanges', info['continuous']);
+      data = data.replaceAll('d.creatoraffill', info['relationship']);
+      data = data.replaceAll('d.markcreatedspell', info['english']);
+      data = data.replaceAll('d.marksimiliar', info['competitor']);
+      data = data.replaceAll('d.mark', info['mark']);
+      data = data.replaceAll('d.acronym', info['abbrev']);
+      data = data.replaceAll('d.goodservices', info['goods']);
+      data = data.replaceAll('d.subjectmatter', info['subjectmatter']);
+      data = data.replaceAll('d.targetcustomer', info['targetcustomer']);
+      data = data.replaceAll('d.tradechannels', info['tradechannels']);
+      data = data.replaceAll('d.ususe', info['currentuse']);
+      data = data.replaceAll('d.usegeography', info['geography']);
+      data = data.replaceAll('d.creatorname', info['creator']);
+      data = data.replaceAll('d.markforeign', info['foreign']);
+      data = data.replaceAll('d.markmeaning', info['significance']);  
+      data = data.replaceAll('d.markabbr', info['abbreviation']);
+
+    }
+
     // if(intentValue == 'Mutual_Non_Disclosure_Agreement' ){
     //   data = data.replaceAll('d.date', info['employername']);
     //   data = data.replaceAll('d.partyone', info['conatct']);
