@@ -151,7 +151,7 @@ console.log('resultText = '+resultText);
     intents.set("Operating Agreement Multi-Member", "Operating_Agreement_Multi_Member")
     intents.set("Mutual Non-Disclosure Agreement", "Mutual_Non_Disclosure_Agreement")
     intents.set("Corporate Bylaws", "Corporate_Bylaws")
-    intents.set("US Trademark Search and Registration Questionnaire", "US_Trademark_Search_and_Registration_Questionnaire")
+    intents.set("Trademark Application", "Trademark_Application")
 
     var intentKey = "Background Check Policy";
     var intentValue = "Background_Check_Policy";
@@ -239,34 +239,27 @@ console.log('resultText = '+resultText);
       data = data.replaceAll('d.paymentMethod', info['paymentmethod']);
     }
 
-    if(intentValue == 'US_Trademark_Search_and_Registration_Questionnaire' ){
+    if(intentValue == 'Trademark_Application' ){
 
-
-//       data = data.replaceAll('d.usbusiness', info['']);
-//       data = data.replaceAll('d.firstuse', info['']);
-//       data = data.replaceAll('d.usematerials', info['']);
-        
-// socialmedia 
-// domain   
-// intend  
-
-
-      data = data.replaceAll('d.markchanges', info['continuous']);
-      data = data.replaceAll('d.creatoraffill', info['relationship']);
-      data = data.replaceAll('d.markcreatedspell', info['english']);
-      data = data.replaceAll('d.marksimiliar', info['competitor']);
-      data = data.replaceAll('d.mark', info['mark']);
-      data = data.replaceAll('d.acronym', info['abbrev']);
-      data = data.replaceAll('d.goodservices', info['goods']);
-      data = data.replaceAll('d.subjectmatter', info['subjectmatter']);
+      data = data.replaceAll('d.creatorname', info['creatorname']);
+      data = data.replaceAll('d.usematerials', info['usematerials']);
+      data = data.replaceAll('d.creatoraffill', info['creatoraffill']);
+      data = data.replaceAll('d.goodservices', info['goodservices']);
+      data = data.replaceAll('d.usegeography', info['usegeography']);
+      data = data.replaceAll('d.acronym', info['acronym']);
       data = data.replaceAll('d.targetcustomer', info['targetcustomer']);
+      data = data.replaceAll('d.marksimiliar', info['marksimiliar']);
+      data = data.replaceAll('d.subjectmatter', info['subjectmatter']);
+      data = data.replaceAll('d.markcreatedspell', info['markcreatedspell']);
       data = data.replaceAll('d.tradechannels', info['tradechannels']);
-      data = data.replaceAll('d.ususe', info['currentuse']);
-      data = data.replaceAll('d.usegeography', info['geography']);
-      data = data.replaceAll('d.creatorname', info['creator']);
-      data = data.replaceAll('d.markforeign', info['foreign']);
-      data = data.replaceAll('d.markmeaning', info['significance']);  
-      data = data.replaceAll('d.markabbr', info['abbreviation']);
+      data = data.replaceAll('d.mark', info['mark']);
+      data = data.replaceAll('d.markchanges', info['markchanges']);
+      data = data.replaceAll('d.markmeaning', info['markmeaning']);  
+      data = data.replaceAll('d.markforeign', info['markforeign']);
+      data = data.replaceAll('d.markabbr', info['markabbr']);
+      data = data.replaceAll('d.ususe', info['ususe']);
+      data = data.replaceAll('d.usbusiness', info['usbusiness']);
+      data = data.replaceAll('d.firstuse', info['firstuse']);
 
     }
 
