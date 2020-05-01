@@ -263,6 +263,24 @@ console.log('resultText = '+resultText);
 
     }
 
+    if(intentValue == 'Mutual_Non_Disclosure_Agreement' ){
+
+      // data = data.replaceAll('d.date', info['']);
+      data = data.replaceAll('d.partyone', info['partyone']);
+      data = data.replaceAll('d.partyoneaddress', info['partyoneaddress']);
+      data = data.replaceAll('d.partyonestate', info['partyonestate']);
+      data = data.replaceAll('d.partyonecity', info['partyonecity']);
+      data = data.replaceAll('d.partyonecounty', info['partyonecounty']);
+      data = data.replaceAll('d.partyoneentity', info['partyoneentity']);
+      data = data.replaceAll('d.partytwo', info['partytwo']);
+      data = data.replaceAll('d.partytwoaddress', info['partytwoaddress']);
+      data = data.replaceAll('d.partytwostate', info['partytwostate']);
+      data = data.replaceAll('d.partytwoentity', info['partytwoentity']);
+      data = data.replaceAll('d.purpose', info['purpose']);
+      data = data.replaceAll('d.timeperiod', info['timeperiod']);
+
+    }
+
     // if(intentValue == 'Mutual_Non_Disclosure_Agreement' ){
     //   data = data.replaceAll('d.date', info['employername']);
     //   data = data.replaceAll('d.partyone', info['conatct']);
