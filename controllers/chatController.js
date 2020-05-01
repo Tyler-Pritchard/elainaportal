@@ -264,8 +264,17 @@ console.log('resultText = '+resultText);
     }
 
     if(intentValue == 'Mutual_Non_Disclosure_Agreement' ){
+      // current timestamp in milliseconds
+      let ts = Date.now();
+      let date_ob = new Date(ts);
+      let date = date_ob.getDate();
+      let month = date_ob.getMonth() + 1;
+      let year = date_ob.getFullYear();
 
-      // data = data.replaceAll('d.date', info['']);
+      // prints date & time in YYYY-MM-DD format
+      date_today = year + "-" + month + "-" + date;
+
+      data = data.replaceAll('d.date', date_today);
       data = data.replaceAll('d.partyone', info['partyone']);
       data = data.replaceAll('d.partyoneaddress', info['partyoneaddress']);
       data = data.replaceAll('d.partyonestate', info['partyonestate']);
@@ -281,20 +290,23 @@ console.log('resultText = '+resultText);
 
     }
 
-    // if(intentValue == 'Mutual_Non_Disclosure_Agreement' ){
-    //   data = data.replaceAll('d.date', info['employername']);
-    //   data = data.replaceAll('d.partyone', info['conatct']);
-    //   data = data.replaceAll('d.partyonestate', info['formsdepartment']);
-    //   data = data.replaceAll('d.partyoneentity', info['permitrequired']);
-    //   data = data.replaceAll('d.partyonecounty', info['permitrequired']);
-    //   data = data.replaceAll('d.partyoneaddress', info['changeposition']);
-      
-    //   data = data.replaceAll('d.partytwo', info['statuscontact']);
-    //   data = data.replaceAll('d.partytwostate', info['paymentmethod']);
-    //   data = data.replaceAll('d.partytwoentity', info['paymentmethod']);
-    //   data = data.replaceAll('d.partytwoaddress', info['paymentmethod']);
-    //   data = data.replaceAll('d.purpose', info['paymentmethod']);
-    // }
+    if(intentValue == 'Buy_Sell_Agreement' ){
+
+      data = data.replaceAll('d.date', date_today);
+      data = data.replaceAll('d.partyone', info['partyone']);
+      data = data.replaceAll('d.partyoneaddress', info['partyoneaddress']);
+      data = data.replaceAll('d.partyonestate', info['partyonestate']);
+      data = data.replaceAll('d.partyonecity', info['partyonecity']);
+      data = data.replaceAll('d.partyonecounty', info['partyonecounty']);
+      data = data.replaceAll('d.partyoneentity', info['partyoneentity']);
+      data = data.replaceAll('d.partytwo', info['partytwo']);
+      data = data.replaceAll('d.partytwoaddress', info['partytwoaddress']);
+      data = data.replaceAll('d.partytwostate', info['partytwostate']);
+      data = data.replaceAll('d.partytwoentity', info['partytwoentity']);
+      data = data.replaceAll('d.purpose', info['purpose']);
+      data = data.replaceAll('d.timeperiod', info['timeperiod']);
+
+    }
 
 const date = Date.now();
     //pdf conversion here
