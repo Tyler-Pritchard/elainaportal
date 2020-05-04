@@ -152,6 +152,7 @@ console.log('resultText = '+resultText);
     intents.set("Mutual Non-Disclosure Agreement", "Mutual_Non_Disclosure_Agreement")
     intents.set("Corporate Bylaws", "Corporate_Bylaws")
     intents.set("Trademark Application", "Trademark_Application")
+    intents.set("Application for Employment", "Application_for_Employment")
 
     var intentKey = "Background Check Policy";
     var intentValue = "Background_Check_Policy";
@@ -314,6 +315,17 @@ console.log('resultText = '+resultText);
       data = data.replaceAll('d.nameInsurenceCompany', info['insurancecomp']);
       data = data.replaceAll('d.addressInsurenceCompany', info['insuranceaddress']);
       data = data.replaceAll('d.numberOfMonth', info['installment']);
+
+    }
+
+    if(intentValue == 'Buy_Sell_Agreement' ){
+      data = data.replaceAll('d.number', info['number']);
+      data = data.replaceAll('d.employeeName', info['employeename']);
+      // data = data.replaceAll('d.', info['numberdays']);
+      // data = data.replaceAll('d.', info['history']);
+      // data = data.replaceAll('d.', info['personalprofessional']);
+      // data = data.replaceAll('d.', info['relatives']);
+      // data = data.replaceAll('d.', info['noncompete']);
 
     }
 
