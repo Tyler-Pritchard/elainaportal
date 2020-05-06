@@ -153,6 +153,7 @@ console.log('resultText = '+resultText);
     intents.set("Corporate Bylaws", "Corporate_Bylaws")
     intents.set("Trademark Application", "Trademark_Application")
     intents.set("Application for Employment", "Application_for_Employment")
+    intents.set("Confidentiality and Proprietary Rights Agreement", "Confidentiality_and_Proprietary_Rights_Agreement")
 
     var intentKey = "Background Check Policy";
     var intentValue = "Background_Check_Policy";
@@ -292,14 +293,11 @@ console.log('resultText = '+resultText);
     }
 
     if(intentValue == 'Buy_Sell_Agreement' ){
-      // current timestamp in milliseconds
       let ts = Date.now();
       let date_ob = new Date(ts);
       let date = date_ob.getDate();
       let month = date_ob.getMonth() + 1;
       let year = date_ob.getFullYear();
-
-      // prints date & time in YYYY-MM-DD format
       date_today = year + "-" + month + "-" + date;
 
 // scorp 
@@ -318,7 +316,7 @@ console.log('resultText = '+resultText);
 
     }
 
-    if(intentValue == 'Buy_Sell_Agreement' ){
+    if(intentValue == 'Application_for_Employment' ){
       data = data.replaceAll('d.number', info['number']);
       data = data.replaceAll('d.employeeName', info['employeename']);
       // data = data.replaceAll('d.', info['numberdays']);
@@ -327,6 +325,17 @@ console.log('resultText = '+resultText);
       // data = data.replaceAll('d.', info['relatives']);
       // data = data.replaceAll('d.', info['noncompete']);
 
+    }
+
+    if(intentValue == 'Confidentiality_and_Proprietary_Rights_Agreement' ){
+      data = data.replaceAll('d.number', info['officertitle']);
+      data = data.replaceAll('d.employeeName', info['employerentity']);
+      data = data.replaceAll('d.employeeName', info['officer']);
+      data = data.replaceAll('d.employeeName', info['employername']);
+      data = data.replaceAll('d.employeeName', info['employeename']);
+      data = data.replaceAll('d.employeeName', info['employerstate']);
+      data = data.replaceAll('d.employeeName', info['thirdparties']);
+      data = data.replaceAll('d.employeeName', info['employersubsidiaries']);
     }
 
 const date = Date.now();
