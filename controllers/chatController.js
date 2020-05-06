@@ -173,9 +173,11 @@ console.log('resultText = '+resultText);
 
     var info = currentUser[intentValue]; //:s[Object.keys(intents)[1]]]; //'Background_Check_Policy'];
 
-    console.log("typeof info:");
-    console.log(typeof info);
-    console.log("info.length:");
+    console.log("currentUser:");
+    console.log(currentUser);
+    console.log("info:");
+    console.log(info);
+    console.log("--------End of info-------------")
     //console.log(info.keys().length);
 
     await emailSender.sendEmail('spoon.jeremy@gmail.com', approver['email'], 'Please approve the documents from Deeplaw', 'test', '<strong>There are documents from ' + req.user.username + '</strong>');
@@ -205,8 +207,6 @@ console.log('resultText = '+resultText);
       var target = this;
       return target.replace(new RegExp(search, 'g'), replacement);
     };
-    console.log(info);
-    console.log("--------")
 
     // Replace Template Fields with values in database
     var keys = Object.keys(info);
