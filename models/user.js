@@ -81,7 +81,7 @@ const userSchema = new mongoose.Schema({
     startdate: String,
     feeamount: String,
   },
-  BuySell_Agreement: {
+  Buy_Sell_Agreement: {
     parvalue: String,
     spouseinterest: String,
     companyname: String,
@@ -213,6 +213,15 @@ const userSchema = new mongoose.Schema({
       usbusiness: String,
       ususe: String,
       firstuse: String
+    },
+    Application_for_Employment: {
+        number: String,
+        numberdays: String,
+        history: String,
+        personalprofessional: String,
+        relatives: String,
+        employeename: String,
+        noncompete: String
     },
 
 });
