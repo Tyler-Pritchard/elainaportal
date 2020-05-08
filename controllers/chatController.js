@@ -327,15 +327,89 @@ console.log('resultText = '+resultText);
 
     }
 
-    if(intentValue == 'Confidentiality_and_Proprietary_Rights_Agreement' ){
-      data = data.replaceAll('d.number', info['officertitle']);
-      data = data.replaceAll('d.employeeName', info['employerentity']);
-      data = data.replaceAll('d.employeeName', info['officer']);
-      data = data.replaceAll('d.employeeName', info['employername']);
-      data = data.replaceAll('d.employeeName', info['employeename']);
-      data = data.replaceAll('d.employeeName', info['employerstate']);
-      data = data.replaceAll('d.employeeName', info['thirdparties']);
-      data = data.replaceAll('d.employeeName', info['employersubsidiaries']);
+    // if(intentValue == 'Confidentiality_and_Proprietary_Rights_Agreement' ){
+    //   let ts = Date.now();
+    //   let date_ob = new Date(ts);
+    //   let date = date_ob.getDate();
+    //   let month = date_ob.getMonth() + 1;
+    //   let year = date_ob.getFullYear();
+    //   date_today = year + "-" + month + "-" + date;
+
+    //   data = data.replaceAll('d.date', date_today);
+
+
+    //   employerentity: titlecase(employerentity),
+    //   officertitle: titlecase(officertitle),
+    //                 officer: titlecase(officer),
+    //                 employername: titlecase(employername),                
+    //                 employeename: titlecase(employeename),           
+    //                 employerstate: titlecase(employerstate),           
+    //                 thirdparties: titlecase(thirdparties),           
+    //                 employersubsidiaries: titlecase(employersubsidiaries),
+
+    //   data = data.replaceAll('d.nameOfParty1', info['employerentity']);
+    //   data = data.replaceAll('d.party1StateOfOrganization', info['employerentity']);
+    //   data = data.replaceAll('d.party1EntityType', info['employerentity']);
+    //   data = data.replaceAll('d.party1BusinessAddress', info['employerentity']);
+    //   data = data.replaceAll('d.nameOfParty2', info['employerentity']);
+    //   data = data.replaceAll('d.party2StateOfOrganization', info['employerentity']);
+    //   data = data.replaceAll('d.party2EntityType', info['employerentity']);
+    //   data = data.replaceAll('d.party2BusinessAddress', info['employerentity']);
+    //   data = data.replaceAll('d.descriptionOfPurpose', info['employerentity']);
+    //   data = data.replaceAll('d.expireNumber', info['employerentity']);
+    //   data = data.replaceAll('d.relaventCity', info['employerentity']);
+    //   data = data.replaceAll('d.relaventCountry', info['employerentity']);
+
+    // }
+
+    if(intentValue == 'Independent_Contractor_Agreement' ){
+      let ts = Date.now();
+      let date_ob = new Date(ts);
+      let date = date_ob.getDate();
+      let month = date_ob.getMonth() + 1;
+      let year = date_ob.getFullYear();
+      date_today = year + "-" + month + "-" + date;
+
+      data = data.replaceAll('d.todaysdate', date_today);
+
+
+//       otherconfinfo 
+// companyname 
+// contractorname  
+// contractordeliverables  
+// enddate 
+// entitytype  
+// agreementdate 
+// startdate 
+// feeamount 
+// contractoraddress 
+
+      data = data.replaceAll('d.serviceprovider', info['employerentity']);
+      data = data.replaceAll('d.stateofprovider', info['employerentity']);
+      data = data.replaceAll('d.entityprovider', info['employerentity']);
+      data = data.replaceAll('d.addressprovider', info['employerentity']);
+      data = data.replaceAll('d.customer', info['employerentity']);
+      data = data.replaceAll('d.stateofcustomer', info['employerentity']);
+      data = data.replaceAll('d.entitycustomer', info['employerentity']);
+      data = data.replaceAll('d.addresscustomer', info['employerentity']);
+      data = data.replaceAll('d.categoryofservices', info['employerentity']);
+      data = data.replaceAll('d.orcontractors', info['employerentity']);
+      data = data.replaceAll('d.replacementprovider', info['employerentity']);
+      data = data.replaceAll('d.recordkeeping', info['employerentity']);
+      data = data.replaceAll('d.feesamount', info['employerentity']);
+      data = data.replaceAll('d.paymentschedule', info['employerentity']);
+      data = data.replaceAll('d.preapprovalexpenses', info['employerentity']);
+      data = data.replaceAll('d.interest', info['employerentity']);
+      data = data.replaceAll('d.latereimburse', info['employerentity']);
+      data = data.replaceAll('d.suspensionofservices', info['employerentity']);
+      data = data.replaceAll('d.term', info['employerentity']);
+      data = data.replaceAll('d.breach', info['employerentity']);
+      data = data.replaceAll('d.failure', info['employerentity']);
+      data = data.replaceAll('d.insurance', info['employerentity']);
+      data = data.replaceAll('d.customerofficer', info['employerentity']);
+      data = data.replaceAll('d.serviceaddress', info['employerentity']);
+      data = data.replaceAll('d.serviceofficer', info['employerentity']);
+      data = data.replaceAll('d.statementofwork', info['statementofwork']);
     }
 
 const date = Date.now();

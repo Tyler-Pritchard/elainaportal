@@ -192,7 +192,28 @@ const userSchema = new mongoose.Schema({
     humanResourcesDepartmentName: String,
     union: String,
     position: String
-  }
+  },
+  Trademark_Application: {
+      creatorname: String,
+      usematerials: String,
+      creatoraffill: String,
+      goodservices: String,
+      usegeography: String,
+      acronym: String,
+      targetcustomer: String,
+      marksimiliar: String,
+      subjectmatter: String,
+      markcreatedspell: String,
+      markchanges: String,
+      tradechannels: String,
+      mark: String,
+      markmeaning: String,
+      markforeign: String,
+      markabbr: String,
+      usbusiness: String,
+      ususe: String,
+      firstuse: String
+    },
 
 });
 
