@@ -223,6 +223,17 @@ const userSchema = new mongoose.Schema({
         employeename: String,
         noncompete: String
     },
+    Employee_Confidentiality_and_Proprietary_Rights_Agreement: {
+        employername: String,
+        employerstate: String,
+        employerentity: String,
+        employersubsidiaries: String,                
+        employeeName: String,           
+        consideration: String,           
+        shareconfidential: String,           
+        officerName: String,
+        officerTitle: String
+    }
 
 });
 

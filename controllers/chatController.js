@@ -327,6 +327,30 @@ console.log('resultText = '+resultText);
 
     }
 
+
+    if(intentValue == 'Employee_Confidentiality_and_Proprietary_Rights_Agreement' ){
+      data = data.replaceAll('d.employername', info['employername']);
+      data = data.replaceAll('d.employerstate', info['employerstate']);
+      data = data.replaceAll('d.employerentity', info['employerentity']);
+      data = data.replaceAll('d.employersubsidiaries', info['employersubsidiaries']);
+      data = data.replaceAll('d.employeeName', info['employeeName']);
+      data = data.replaceAll('d.consideration', info['consideration']);
+      data = data.replaceAll('d.shareconfidential', info['shareconfidential']);
+      data = data.replaceAll('d.officerName', info['officerName']);
+      data = data.replaceAll('d.officerTitle', info['officerTitle']);
+    }
+
+    if(intentValue == 'Application_for_Employment' ){
+      data = data.replaceAll('d.number', info['number']);
+      data = data.replaceAll('d.employeeName', info['employeename']);
+      // data = data.replaceAll('d.', info['numberdays']);
+      // data = data.replaceAll('d.', info['history']);
+      // data = data.replaceAll('d.', info['personalprofessional']);
+      // data = data.replaceAll('d.', info['relatives']);
+      // data = data.replaceAll('d.', info['noncompete']);
+
+    }
+
     // if(intentValue == 'Confidentiality_and_Proprietary_Rights_Agreement' ){
     //   let ts = Date.now();
     //   let date_ob = new Date(ts);
