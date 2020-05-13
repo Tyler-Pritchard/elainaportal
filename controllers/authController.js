@@ -56,6 +56,8 @@ exports.login = (req, res) => {
       .createHash("md5")
       .update(password)
       .digest("hex");
+      console.log('pasword has is');
+      console.log(passwordHash);
   User.findOne({ email: username, password: passwordHash }).then(
       result => {
         if (result != null) {
