@@ -36,10 +36,10 @@ $(document).ready(function(){
                         diffString = "Just now";
                     }
                     if (seconddiff > 60 && seconddiff < 120) {
-                        diffString = "A miniute ago";
+                        diffString = "A minute ago";
                     }
                     if (seconddiff > 120 && seconddiff < 3600) {
-                        diffString = Math.floor(seconddiff / 60) + " miniutes ago";
+                        diffString = Math.floor(seconddiff / 60) + " minutes ago";
                     }
                     if (seconddiff > 3600) {
                         if (seconddiff / 3600 == 1) {
@@ -172,6 +172,9 @@ $(document).ready(function(){
     $('body').on('keyup', 'form.chat-form textarea', function(event) {
         var content = $(this).val();
         if (event.keyCode == 13 && !event.shiftKey) {
+            // Chat Loading Indicator bubbles
+            $(".chat-module-bubbles").css("display", "inline-block");
+
             var token = localStorage.getItem("token");
             var username = localStorage.getItem("username");
             var contentmodule = $(".chat-module-body");
@@ -195,6 +198,9 @@ $(document).ready(function(){
                 text: content
               })
               .then((res) => {
+                  // Chat Loading Indicator bubbles
+                  $(".chat-module-bubbles").css("display", "none");
+
                   console.log(res);
                   console.log(res.data.fulfillmentText);
                   if (res.status == 200) {
