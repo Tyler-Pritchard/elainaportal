@@ -50,6 +50,10 @@ router.get("/approve", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/approve.html'));
 });
 
+router.get("/new", (req, res, next) => {
+  res.sendFile(path.join(__basedir + '/public/pages/new.html'));
+});
+
 router.get("/unfinisheddocuments", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/unfinisheddocuments.html'));
 });
