@@ -47,12 +47,9 @@ router.get("/pubchat", (req, res, next) => {
 });
 
 router.get("/approve", (req, res, next) => {
-  res.sendFile(path.join(__basedir + '/public/pages/approve.html'));
+  res.sendFile(path.join(__basedir + '/public/pages/approve-new.html'));
 });
 
-router.get("/new", (req, res, next) => {
-  res.sendFile(path.join(__basedir + '/public/pages/new.html'));
-});
 
 router.get("/unfinisheddocuments", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/unfinisheddocuments.html'));

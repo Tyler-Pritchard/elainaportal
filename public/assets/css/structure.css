@@ -17,8 +17,9 @@
     margin: 0
 }
 .navbar-brand {
-    width: 5.5rem;
-    padding-top: 0.0rem;
+    width: 70%;
+    margin-left: 10%;
+    padding-top: 0.2rem;
     padding-bottom: 0.0rem;
     margin-right: 0.0rem;
 }
@@ -548,9 +549,7 @@ header.navbar:not(.tabMobileView) .navbar-nav .nav-item form.form-inline:before 
 }
 #sidebar .navbar-brand .img-fluid {
     display: inline;
-    width: 44px;
     height: auto;
-    margin-left: 20px;
     margin-top: 5px;
 }
 #sidebar .border-underline {
