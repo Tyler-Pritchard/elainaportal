@@ -25,10 +25,3 @@ $(".top-search-scroll").mCustomScrollbar({
   autoHideScrollbar: true,
   theme:"dark-thin"
 });
-
-
-/*
-  ================
-      Donut Chart
-  ================
-*/
