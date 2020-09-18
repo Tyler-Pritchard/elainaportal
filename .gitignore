@@ -17,3 +17,4 @@ release
 *.ntvs*
 *.njsproj
 *.sln
+keys.js
