@@ -51,12 +51,24 @@ app.use(
   
   require('./routes/authRoutes')(app);
   require('./routes/billingRoutes')(app);
+  
 
   // load passport strategies
   const localSignupStrategy = require('./passport/local-signup');
   const localLoginStrategy = require('./passport/local-login');
   // passport.use('local-signup', localSignupStrategy);
   // passport.use('local-login', localLoginStrategy);
+
+  passport.serializeUser((user, done) => {
+    done(null, user.id)
+  });
+  
+  passport.deserializeUser((id, done) => {
+    User.findById(id)
+    .then(user => {
+        done(null, user);
+    });
+  });
 
   const GoogleStrategy = require('passport-google-oauth20').Strategy;
   passport.use(
@@ -76,7 +88,7 @@ app.use(
           return done(null, existingUser);
         }
         
-        const user = await new User({goodleId: profile.id }).save()
+        const user = await new User({goodleId: profile.id }).save();
         done(null, user);
       }
     )
@@ -95,16 +107,7 @@ var auth = require('./routes/authRoutes');
 var billing = require('./routes/billingRoutes');
 app.use(auth);
 app.use(billing);
-passport.serializeUser((user, done) => {
-  done(null, user.id)
-});
 
-passport.deserializeUser((id, done) => {
-  User.findById(id)
-  .then(user => {
-      done(null, user);
-  });
-});
 app.use(express.static(__dirname + '/dashboard'));
 
 app.use(function(req, res, next) {
