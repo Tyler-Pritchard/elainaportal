@@ -18,3 +18,5 @@ release
 *.njsproj
 *.sln
 dev.js
+.env
+.env.example
