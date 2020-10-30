@@ -49,12 +49,11 @@
     "start": "node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Easybuoy/node-api-deploy.git"
+    "url": "git+https://github.com/tylerpritchard/elainaportal.git"
   },
   "author": "Ezekiel Ekunola",
   "license": "ISC",
