@@ -1,7 +1,7 @@
 {
-  "name": "api-deploy",
-  "version": "1.0.0",
-  "description": "Node API",
+  "name": "elaina-portal",
+  "version": "1.0.1",
+  "description": "Node App",
   "main": "app.js",
   "dependencies": {
     "@google-cloud/storage": "^4.7.0",
@@ -20,6 +20,7 @@
     "html-docx-js": "^0.3.1",
     "jsonwebtoken": "^8.5.1",
     "libreoffice-convert": "^1.0.5",
+    "localtunnel": "^1.9.2",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mongodb": "^3.3.0",
@@ -39,6 +40,10 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
+  },
+  "engines": {
+    "node": "8.1.1",
+    "npm": "5.0.3"
   },
   "scripts": {
     "start": "node app.js",
