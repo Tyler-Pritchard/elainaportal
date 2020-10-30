@@ -116,30 +116,14 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// development error handler
-// will print stacktrace
-if (!isProduction) {
-  app.use(function(err, req, res, next) {
-    console.log(err.stack);
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
 
-    res.status(err.status || 500);
-
-    res.json({'errors': {
-      message: err.message,
-      error: err
-    }});
+  const path = require('path');
+  app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({'errors': {
-    message: err.message,
-    error: {}
-  }});
-});
 
 // finally, let's start our server...
 var server = app.listen( process.env.PORT || 5000, function(){
