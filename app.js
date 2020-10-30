@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 var fs = require('fs');
 var http = require('http'),
     path = require('path'),
@@ -14,7 +14,6 @@ var http = require('http'),
     require("./models/chat");
     require("./models/user");
 
-var isProduction = process.env.NODE_ENV === 'production';
 var User = require('./models/user');
 
 const keys = require('./config/keys');
@@ -126,7 +125,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// finally, let's start our server...
-var server = app.listen( process.env.PORT || 5000, function(){
-  console.log('Listening on port ' + server.address().port);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, function(){
+  console.log(`serving on http://localhost:${PORT}`);
 });
