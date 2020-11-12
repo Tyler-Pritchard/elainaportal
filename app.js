@@ -125,7 +125,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, function(){
   console.log(`serving on http://localhost:${PORT}`);
 });
