@@ -16,7 +16,7 @@ var http = require('http'),
 
 var User = require('./models/user');
 
-const keys = require('./config/keys');
+const keys = require('config/keys.js');
 const cookieSession = require('cookie-session');
 // Create global app object
 var app = express();
@@ -73,8 +73,8 @@ app.use(
   passport.use(
     new GoogleStrategy(
       {
-        clientID: 'keys.googleClientID',
-        clientSecret: 'keys.googleClientSecret',
+        clientID: keys.googleClientID,
+        clientSecret: keys.googleClientSecret,
         callbackURL: '/auth/google/callback',
         proxy: true
       },
