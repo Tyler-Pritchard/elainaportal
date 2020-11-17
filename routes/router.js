@@ -12,7 +12,7 @@ var passport = require('passport');
 
 var URL = process.env.MONGO_URL;
 
-var chatController = require("../controllers/chatController");
+//var chatController = require("../controllers/chatController");
 var authController = require("../controllers/authController");
 var docController = require("../controllers/docController");
 
@@ -82,10 +82,10 @@ router.post("/api/approveDoc", docController.approveDoc);
 router.post("/api/fileUpload", docController.fileUpload);
 // ChatController
 
-router.post("/api/pubchat", chatController.publicChat);
+// router.post("/api/pubchat", chatController.publicChat);
 
-router.post("/api/chat", chatController.addChat);
-router.get("/api/getChats", chatController.getChats);
+// router.post("/api/chat", chatController.addChat);
+// router.get("/api/getChats", chatController.getChats);
 
 // AuthController
 

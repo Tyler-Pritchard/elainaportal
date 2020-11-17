@@ -1,5 +1,5 @@
 require("dotenv").config();
-//var config = require("../config");
+var config = require("../config");
 var User = require('../models/user');
 var Chat = require('../models/chat');
 var Doc = require('../models/docapprove');

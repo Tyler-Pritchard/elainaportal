@@ -56,8 +56,8 @@ class DeepDialogFlow {
     }
     // A unique identifier for the given session
     this.sessionClient = new dialogflow.SessionsClient(config);
-    // const sessionId = uuid.v4();
-    // this.sessionPath = this.sessionClient.sessionPath('abbi-cvflsy', sessionId);
+    const sessionId = uuid.v4();
+    this.sessionPath = this.sessionClient.sessionPath('abbi-cvflsy', sessionId);
   }
 
   getSessionPath() {
