@@ -16,7 +16,7 @@ var http = require('http'),
 
 var User = require('./models/user');
 
-//const keys = require('config/keys.js');
+const keys = require('config/keys.js');
 const cookieSession = require('cookie-session');
 // Create global app object
 var app = express();
