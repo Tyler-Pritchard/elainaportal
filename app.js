@@ -10,7 +10,7 @@ var http = require('http'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     cors = require('cors');
-    // errorhandler = require('errorhandler');
+    errorhandler = require('errorhandler');
     // require("./models/chat");
     // require("./models/user");
     
@@ -101,7 +101,7 @@ app.use('/api', authCheckMiddleware);
 global.__basedir = __dirname;
 
 var routes = require('./routes/router');
-// app.use(routes);
+app.use(routes);
 
 // var auth = require('./routes/authRoutes');
 // var billing = require('./routes/billingRoutes');
@@ -110,11 +110,11 @@ var routes = require('./routes/router');
 
 app.use(express.static(__dirname + '/dashboard'));
 
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
