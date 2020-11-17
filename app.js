@@ -48,8 +48,8 @@ app.use(bodyParser.json());
   //OAuth passport & routes
   app.use(passport.session());
   
-  require('./routes/authRoutes')(app);
-  require('./routes/billingRoutes')(app);
+  // require('./routes/authRoutes')(app);
+  // require('./routes/billingRoutes')(app);
   
 
   // load passport strategies
