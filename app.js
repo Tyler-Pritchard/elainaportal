@@ -13,10 +13,10 @@ var http = require('http'),
     // errorhandler = require('errorhandler');
     require("./models/chat");
     require("./models/user");
-
+    
+var keys = require('config/keys.js');
 var User = require('./models/user');
 
-const keys = require('config/keys.js');
 const cookieSession = require('cookie-session');
 // Create global app object
 var app = express();
