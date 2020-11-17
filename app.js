@@ -14,7 +14,7 @@ var http = require('http'),
     require("./models/chat");
     require("./models/user");
     
-var keys = require('config/keys');
+// var keys = require('config/keys');
 var User = require('./models/user');
 
 const cookieSession = require('cookie-session');
@@ -32,12 +32,12 @@ app.use(session({
 // Normal express config defaults
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
-  })
-  );
+// app.use(
+//   cookieSession({
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey]
+//   })
+//   );
   app.use(morgan('dev'));
   mongoose.connect('mongodb+srv://newtest:incredible@cluster0-atfmx.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true } );
 
