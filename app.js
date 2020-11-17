@@ -103,10 +103,10 @@ global.__basedir = __dirname;
 var routes = require('./routes/router');
 // app.use(routes);
 
-var auth = require('./routes/authRoutes');
-var billing = require('./routes/billingRoutes');
-app.use(auth);
-app.use(billing);
+// var auth = require('./routes/authRoutes');
+// var billing = require('./routes/billingRoutes');
+// app.use(auth);
+// app.use(billing);
 
 app.use(express.static(__dirname + '/dashboard'));
 
