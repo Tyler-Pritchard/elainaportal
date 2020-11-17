@@ -16,7 +16,7 @@ var http = require('http'),
 
 var User = require('./models/user');
 
-const keys = require('config/keys.js');
+//const keys = require('config/keys.js');
 const cookieSession = require('cookie-session');
 // Create global app object
 var app = express();
@@ -55,8 +55,8 @@ app.use(
   // load passport strategies
   const localSignupStrategy = require('./passport/local-signup');
   const localLoginStrategy = require('./passport/local-login');
-  // passport.use('local-signup', localSignupStrategy);
-  // passport.use('local-login', localLoginStrategy);
+  passport.use('local-signup', localSignupStrategy);
+  passport.use('local-login', localLoginStrategy);
 
   passport.serializeUser((user, done) => {
     done(null, user.id)
