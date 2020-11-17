@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//press approve in mvp portat, sets category in mongo as approved.  Fromt there another js function
 const docapproveSchema = mongoose.Schema({
 	user: {
 		type: String,

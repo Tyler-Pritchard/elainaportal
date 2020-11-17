@@ -73,8 +73,8 @@ app.use(
   passport.use(
     new GoogleStrategy(
       {
-        clientID: keys.googleClientID,
-        clientSecret: keys.googleClientSecret,
+        clientID: 'keys.googleClientID',
+        clientSecret: 'keys.googleClientSecret',
         callbackURL: '/auth/google/callback',
         proxy: true
       },
@@ -100,7 +100,7 @@ app.use('/api', authCheckMiddleware);
 
 global.__basedir = __dirname;
 
-// var routes = require('./routes/router');
+var routes = require('./routes/router');
 // app.use(routes);
 
 var auth = require('./routes/authRoutes');

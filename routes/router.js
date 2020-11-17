@@ -12,8 +12,6 @@ var passport = require('passport');
 
 var URL = process.env.MONGO_URL;
 
-var userModel = require("../models/user");
-
 var chatController = require("../controllers/chatController");
 var authController = require("../controllers/authController");
 var docController = require("../controllers/docController");
