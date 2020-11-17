@@ -14,7 +14,7 @@ var http = require('http'),
     require("./models/chat");
     require("./models/user");
     
-var keys = require('config/keys.js');
+var keys = require('config/keys');
 var User = require('./models/user');
 
 const cookieSession = require('cookie-session');
