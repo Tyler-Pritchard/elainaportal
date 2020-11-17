@@ -69,30 +69,30 @@ app.use(
     });
   });
 
-  const GoogleStrategy = require('passport-google-oauth20').Strategy;
-  passport.use(
-    new GoogleStrategy(
-      {
-        clientID: keys.googleClientID,
-        clientSecret: keys.googleClientSecret,
-        callbackURL: '/auth/google/callback',
-        proxy: true
-      },
-      async (accessToken, refreshToken, profile, done) => {
-        console.log("***ACCESS TOKEN***", accessToken);
-        console.log("***REFRESH TOKEN***", refreshToken);
-        console.log("***GOOGLE PROFILE***", profile);
-        const existingUser = await User.findOne({ googleId: profile.id});
+  // const GoogleStrategy = require('passport-google-oauth20').Strategy;
+  // passport.use(
+  //   new GoogleStrategy(
+  //     {
+  //       clientID: keys.googleClientID,
+  //       clientSecret: keys.googleClientSecret,
+  //       callbackURL: '/auth/google/callback',
+  //       proxy: true
+  //     },
+  //     async (accessToken, refreshToken, profile, done) => {
+  //       console.log("***ACCESS TOKEN***", accessToken);
+  //       console.log("***REFRESH TOKEN***", refreshToken);
+  //       console.log("***GOOGLE PROFILE***", profile);
+  //       const existingUser = await User.findOne({ googleId: profile.id});
         
-        if (existingUser) {
-          return done(null, existingUser);
-        }
+  //       if (existingUser) {
+  //         return done(null, existingUser);
+  //       }
         
-        const user = await new User({goodleId: profile.id }).save();
-        done(null, user);
-      }
-    )
-  );
+  //       const user = await new User({goodleId: profile.id }).save();
+  //       done(null, user);
+  //     }
+  //   )
+  // );
   // pass the authenticaion checker middleware
 const authCheckMiddleware = require('./middleware/requireLogin');
 
