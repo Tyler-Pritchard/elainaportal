@@ -2,7 +2,7 @@ require("dotenv").config();
 var config = require("../config");
 var User = require('../models/user');
 var Chat = require('../models/chat');
-var Doc = require('../models/docapprove');
+var Doc = require('../models/document');
 var formidable = require('formidable');
 var fs = require('fs');
 var emailSender = require('./emailSender.js');
