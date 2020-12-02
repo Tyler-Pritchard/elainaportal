@@ -21,3 +21,5 @@ package-lock.json
 dev.js
 .env
 .env.example
+config/DialogeFlowKey.json
+config/Elaina-Dev-2e6bfd200d3d.json

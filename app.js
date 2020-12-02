@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 var fs = require('fs');
 var http = require('http'),
     path = require('path'),
@@ -12,9 +12,9 @@ var http = require('http'),
     cors = require('cors');
     errorhandler = require('errorhandler');
     // require("./models/chat");
-    // require("./models/user");
+    require("./models/user");
     
-// var keys = require('config/keys');
+var keys = require('./config/keys');
 var User = require('./models/user');
 
 const cookieSession = require('cookie-session');
@@ -48,7 +48,7 @@ app.use(bodyParser.json());
   //OAuth passport & routes
   app.use(passport.session());
   
-  // require('./routes/authRoutes')(app);
+  require('./routes/authRoutes')(app);
   // require('./routes/billingRoutes')(app);
   
 
@@ -69,30 +69,30 @@ app.use(bodyParser.json());
     });
   });
 
-  // const GoogleStrategy = require('passport-google-oauth20').Strategy;
-  // passport.use(
-  //   new GoogleStrategy(
-  //     {
-  //       clientID: keys.googleClientID,
-  //       clientSecret: keys.googleClientSecret,
-  //       callbackURL: '/auth/google/callback',
-  //       proxy: true
-  //     },
-  //     async (accessToken, refreshToken, profile, done) => {
-  //       console.log("***ACCESS TOKEN***", accessToken);
-  //       console.log("***REFRESH TOKEN***", refreshToken);
-  //       console.log("***GOOGLE PROFILE***", profile);
-  //       const existingUser = await User.findOne({ googleId: profile.id});
+  const GoogleStrategy = require('passport-google-oauth20').Strategy;
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: keys.googleClientID,
+        clientSecret: keys.googleClientSecret,
+        callbackURL: '/auth/google/callback',
+        proxy: true
+      },
+      async (accessToken, refreshToken, profile, done) => {
+        console.log("***ACCESS TOKEN***", accessToken);
+        console.log("***REFRESH TOKEN***", refreshToken);
+        console.log("***GOOGLE PROFILE***", profile);
+        const existingUser = await User.findOne({ googleId: profile.id});
         
-  //       if (existingUser) {
-  //         return done(null, existingUser);
-  //       }
+        if (existingUser) {
+          return done(null, existingUser);
+        }
         
-  //       const user = await new User({goodleId: profile.id }).save();
-  //       done(null, user);
-  //     }
-  //   )
-  // );
+        const user = await new User({goodleId: profile.id }).save();
+        done(null, user);
+      }
+    )
+  );
   // pass the authenticaion checker middleware
 const authCheckMiddleware = require('./middleware/requireLogin');
 
@@ -103,18 +103,18 @@ global.__basedir = __dirname;
 var routes = require('./routes/router');
 app.use(routes);
 
-// var auth = require('./routes/authRoutes');
-// var billing = require('./routes/billingRoutes');
-// app.use(auth);
+var auth = require('./routes/authRoutes');
+var billing = require('./routes/billingRoutes');
+app.use(auth);
 // app.use(billing);
 
 app.use(express.static(__dirname + '/dashboard'));
 
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
