@@ -17,7 +17,7 @@ var http = require('http'),
 var keys = require('./config/keys');
 var User = require('./models/user');
 
-const cookieSession = require('cookie-session');
+// const cookieSession = require('cookie-session');
 // Create global app object
 var app = express();
 
@@ -69,6 +69,8 @@ app.use(bodyParser.json());
     });
   });
 
+
+  //Strategies for OAuth Login:  Add Facebook, LinkedIn -TRP
   const GoogleStrategy = require('passport-google-oauth20').Strategy;
   passport.use(
     new GoogleStrategy(
@@ -93,6 +95,8 @@ app.use(bodyParser.json());
       }
     )
   );
+
+
   // pass the authenticaion checker middleware
 const authCheckMiddleware = require('./middleware/requireLogin');
 
@@ -104,7 +108,7 @@ var routes = require('./routes/router');
 app.use(routes);
 
 var auth = require('./routes/authRoutes');
-var billing = require('./routes/billingRoutes');
+//var billing = require('./routes/billingRoutes');
 app.use(auth);
 // app.use(billing);
 
@@ -117,7 +121,10 @@ app.use(function(req, res, next) {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+  
+  
+  //invalid prod command due to directory structure -- Fix in Heroku -TRP
+  // app.use(express.static('client/build'));
 
   const path = require('path');
   app.get('*', (req, res) => {
