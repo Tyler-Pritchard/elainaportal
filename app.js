@@ -98,9 +98,9 @@ app.use(bodyParser.json());
 
 
   // pass the authenticaion checker middleware
-const authCheckMiddleware = require('./middleware/requireLogin');
+// const authCheckMiddleware = require('./middleware/requireLogin');
 
-app.use('/api', authCheckMiddleware);
+// app.use('/api', authCheckMiddleware);
 
 global.__basedir = __dirname;
 
@@ -124,7 +124,7 @@ if (process.env.NODE_ENV === 'production') {
   
   
   //invalid prod command due to directory structure -- Fix in Heroku -TRP
-  // app.use(express.static('client/build'));
+  app.use(express.static('https://elaina-view.herokuapp.com'));
 
   const path = require('path');
   app.get('*', (req, res) => {
