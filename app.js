@@ -23,12 +23,12 @@ var app = express();
 
 app.use(cors());
 
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}));
+// app.use(session({
+//   secret: 'keyboard cat',
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { secure: true }
+// }));
 // Normal express config defaults
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -53,10 +53,10 @@ app.use(bodyParser.json());
   
 
   // load passport strategies
-  const localSignupStrategy = require('./passport/local-signup');
-  const localLoginStrategy = require('./passport/local-login');
-  passport.use('local-signup', localSignupStrategy);
-  passport.use('local-login', localLoginStrategy);
+  // const localSignupStrategy = require('./passport/local-signup');
+  // const localLoginStrategy = require('./passport/local-login');
+  // passport.use('local-signup', localSignupStrategy);
+  // passport.use('local-login', localLoginStrategy);
 
   passport.serializeUser((user, done) => {
     done(null, user.id)
