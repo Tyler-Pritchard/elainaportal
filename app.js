@@ -1,10 +1,10 @@
 require('dotenv').config();
-var fs = require('fs');
-var http = require('http'),
-    path = require('path'),
-    methods = require('methods'),
-    express = require('express'),
-    session = require('express-session'),
+// var fs = require('fs');
+    //http = require('http'),
+    // path = require('path'),
+    // methods = require('methods'),
+var express = require('express'),
+    // session = require('express-session'),
     morgan  = require('morgan'),
     passport = require('passport'),
     bodyParser = require('body-parser'),

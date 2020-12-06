@@ -1,0 +1,1 @@
+I created the document models based on the the model schemas in the legacy folder.  The chat.js and user.js are unchanged for the moment, b/c I think Mongo needs them, but not 100% on that

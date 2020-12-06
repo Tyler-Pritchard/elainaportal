@@ -1,0 +1,1 @@
+I made the requireLogin.js file.  auth-check.js is legacy??
