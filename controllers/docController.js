@@ -1,5 +1,5 @@
 require("dotenv").config();
-var config = require("../config");
+var config = require("../legacy/config");
 var User = require('../models/user');
 var Chat = require('../models/chat');
 var Doc = require('../models/document');
@@ -10,7 +10,7 @@ const AWS = require('aws-sdk');
 AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 
 
-const {uploadFile,getPublicUrl} = require('../helpers/helpers');
+const {uploadFile,getPublicUrl} = require('../legacy/helpers/helpers');
 const libre = require('libreoffice-convert');
 
 const {Storage} = require('@google-cloud/storage');

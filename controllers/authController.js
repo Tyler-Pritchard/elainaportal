@@ -1,5 +1,5 @@
 require("dotenv").config();
-var config = require("../config");
+var config = require("../legacy/config");
 var User = require('../models/user');
 var Chat = require('../models/chat');
 const _ = require("lodash");

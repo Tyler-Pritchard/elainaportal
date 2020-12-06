@@ -6,7 +6,7 @@ var MongoClient = require("mongodb").MongoClient;
 var ObjectId = require("mongodb").ObjectId;
 var crypto = require("crypto");
 var jwt = require("jsonwebtoken");
-var config = require("../config");
+var config = require("../legacy/config");
 var path = require('path');
 var passport = require('passport');
 
