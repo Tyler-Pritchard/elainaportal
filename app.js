@@ -11,11 +11,12 @@ var http = require('http'),
     mongoose = require('mongoose'),
     cors = require('cors');
     errorhandler = require('errorhandler');
-    // require("./models/chat");
-    require("./models/user");
     
 var keys = require('./config/keys');
-var User = require('./models/user');
+var models = require('./models');
+
+
+var User = models.User;
 
 // const cookieSession = require('cookie-session');
 // Create global app object
