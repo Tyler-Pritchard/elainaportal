@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const RecipientSchema = require('./Recipient');
-const SenderSchema = require('./Sender');
 
 const Mutual_Non_Disclosure_AgreementSchema = new Schema({
     partyoneaddress: String,
@@ -18,7 +17,7 @@ const Mutual_Non_Disclosure_AgreementSchema = new Schema({
     partytwo: String,
     validated: { type: Boolean, default: false },
     pending: { type: Boolean, default: true },
-    sender: SenderSchema,
+    _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
 });
 

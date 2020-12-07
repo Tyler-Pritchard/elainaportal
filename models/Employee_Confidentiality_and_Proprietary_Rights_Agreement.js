@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const RecipientSchema = require('./Recipient');
-const SenderSchema = require('./Sender');
 
 const Employee_Confidentiality_and_Proprietary_Rights_AgreementSchema = new Schema({
     employername: String,
@@ -15,7 +14,7 @@ const Employee_Confidentiality_and_Proprietary_Rights_AgreementSchema = new Sche
     officerTitle: String,
     validated: { type: Boolean, default: false },
     pending: { type: Boolean, default: true },
-    sender: SenderSchema,
+    _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
 });
 
