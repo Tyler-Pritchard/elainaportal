@@ -1,16 +1,15 @@
 require("dotenv").config();
-var config = require("../legacy/config");
-var User = require('../models/user');
+var User = require('../models/User');
 var Chat = require('../models/chat');
-var Doc = require('../models/document');
+var Doc = require('../models');
 var formidable = require('formidable');
 var fs = require('fs');
 var emailSender = require('./emailSender.js');
 const AWS = require('aws-sdk');
-AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
+// AWS.config.loadFromPath('./config.json');  //{accessKeyId: 'GOOGE6CBR72CH3RLTADJ55CY',
 
 
-const {uploadFile,getPublicUrl} = require('../legacy/helpers/helpers');
+// const {uploadFile,getPublicUrl} = require('../legacy/helpers/helpers');
 const libre = require('libreoffice-convert');
 
 const {Storage} = require('@google-cloud/storage');

@@ -7,7 +7,6 @@ const Corporate_BylawSchema = new Schema({
     voting: String,
     meetings: String,
     quorum: String,
-    remove: String,
     compensation: String,
     address: String,
     vacancy: String,

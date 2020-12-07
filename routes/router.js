@@ -1,20 +1,18 @@
-require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const _ = require("lodash");
-var MongoClient = require("mongodb").MongoClient;
-var ObjectId = require("mongodb").ObjectId;
-var crypto = require("crypto");
-var jwt = require("jsonwebtoken");
-var config = require("../legacy/config");
-var path = require('path');
-var passport = require('passport');
+const MongoClient = require("mongodb").MongoClient;
+const ObjectId = require("mongodb").ObjectId;
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
+const path = require('path');
+const passport = require('passport');
 
-var URL = process.env.MONGO_URL;
+const URL = process.env.MONGO_URL;
 
-//var chatController = require("../controllers/chatController");
-var authController = require("../controllers/authController");
-var docController = require("../controllers/docController");
+//const chatController = require("../controllers/chatController");
+const authController = require("../controllers/authController");
+const docController = require("../controllers/docController");
 
 router.get("/", (req, res, next) => {
   res.sendFile(path.join(__basedir + '/public/pages/login.html'));

@@ -2,7 +2,7 @@ require("dotenv").config();
 var config = require("../config");
 var Chat = require('../models/chat');
 var path = require('path');
-var User = require('../models/user');
+var User = require('../models/User');
 var DocApprove = require('../models/docapprove');
 const _ = require("lodash");
 

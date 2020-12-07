@@ -2,7 +2,7 @@
   "name": "elaina-portal",
   "version": "1.0.1",
   "description": "Node App",
-  "main": "app.js",
+  "main": "index.js",
   "dependencies": {
     "@google-cloud/storage": "^5.5.0",
     "@sendgrid/mail": "^6.4.0",
@@ -52,8 +52,8 @@
     "npm": "6.14.8"
   },
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
