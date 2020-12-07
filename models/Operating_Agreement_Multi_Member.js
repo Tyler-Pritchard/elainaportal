@@ -43,6 +43,8 @@ const Operating_Agreement_Multi_MemberSchema = new Schema({
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Operating_Agreement_Multi_Members', Operating_Agreement_Multi_MemberSchema);

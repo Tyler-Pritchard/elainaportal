@@ -22,6 +22,8 @@ const Employee_NonCompete_AgreementSchema = new Schema({
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Employee_NonCompete_Agreements', Employee_NonCompete_AgreementSchema);

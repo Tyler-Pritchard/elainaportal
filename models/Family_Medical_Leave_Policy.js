@@ -15,6 +15,8 @@ const Family_Medical_Leave_PolicySchema = new Schema({
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Family_Medical_Leave_Policys', Family_Medical_Leave_PolicySchema);

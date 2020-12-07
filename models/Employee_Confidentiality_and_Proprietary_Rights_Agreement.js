@@ -16,6 +16,8 @@ const Employee_Confidentiality_and_Proprietary_Rights_AgreementSchema = new Sche
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Employee_Confidentiality_and_Proprietary_Rights_Agreements', Employee_Confidentiality_and_Proprietary_Rights_AgreementSchema);

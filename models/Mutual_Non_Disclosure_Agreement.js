@@ -19,6 +19,8 @@ const Mutual_Non_Disclosure_AgreementSchema = new Schema({
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Mutual_Non_Disclosure_Agreements', Mutual_Non_Disclosure_AgreementSchema);

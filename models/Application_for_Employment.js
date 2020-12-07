@@ -14,6 +14,8 @@ const Application_for_EmploymentSchema = new Schema({
         pending: { type: Boolean, default: true },
         _user: { type: Schema.Types.ObjectId, ref: 'User' },
         recipients: [RecipientSchema],
+        dateSent: Date,
+        lastResponded: Date,
     });
 
 mongoose.model('Application_for_Employments', Application_for_EmploymentSchema);

@@ -12,6 +12,7 @@ require('./Operating_Agreement');
 require('./Operating_Agreement_Multi_Member');
 require('./Trademark_Application');
 require('./chat');
-require('./user');
+require('./User');
 require('./Attorney');
 require('./Client');
+require('./Recipient');

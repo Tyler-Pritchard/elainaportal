@@ -16,6 +16,8 @@ const Corporate_BylawSchema = new Schema({
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Corporate_Bylaws', Corporate_BylawSchema);

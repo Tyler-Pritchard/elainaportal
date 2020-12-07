@@ -12,6 +12,8 @@ const Dress_Code_PolicySchema = new Schema({
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Dress_Code_Policys', Dress_Code_PolicySchema);

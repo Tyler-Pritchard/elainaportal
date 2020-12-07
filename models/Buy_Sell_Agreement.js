@@ -18,6 +18,8 @@ const Buy_Sell_AgreementSchema = new Schema({
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Buy_Sell_Agreements', Buy_Sell_AgreementSchema);

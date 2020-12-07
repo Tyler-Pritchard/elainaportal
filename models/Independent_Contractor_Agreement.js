@@ -17,6 +17,8 @@ const Independent_Contractor_AgreementSchema = new Schema({
     pending: { type: Boolean, default: true },
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     recipients: [RecipientSchema],
+    dateSent: Date,
+    lastResponded: Date,
 });
 
 mongoose.model('Independent_Contractor_Agreements', Independent_Contractor_AgreementSchema);
