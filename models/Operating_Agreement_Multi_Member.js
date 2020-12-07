@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const RecipientSchema = require('./Recipient');
+const SenderSchema = require('./Sender');
 
 const Operating_Agreement_Multi_MemberSchema = new Schema({
     membernames: String,
@@ -37,7 +39,11 @@ const Operating_Agreement_Multi_MemberSchema = new Schema({
     manager: String,
     managerfax: String,
     manageremail: String,
-    modification: String
+    modification: String,
+    validated: { type: Boolean, default: false },
+    pending: { type: Boolean, default: true },
+    sender: SenderSchema,
+    recipients: [RecipientSchema],
 });
 
 mongoose.model('Operating_Agreement_Multi_Members', Operating_Agreement_Multi_MemberSchema);

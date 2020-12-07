@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const RecipientSchema = require('./Recipient');
+const SenderSchema = require('./Sender');
 
 const Trademark_ApplicationSchema = new Schema({
     creatorname: String,
@@ -20,7 +22,11 @@ const Trademark_ApplicationSchema = new Schema({
     markabbr: String,
     usbusiness: String,
     ususe: String,
-    firstuse: String
+    firstuse: String,
+    validated: { type: Boolean, default: false },
+    pending: { type: Boolean, default: true },
+    sender: SenderSchema,
+    recipients: [RecipientSchema],
 });
 
 mongoose.model('Trademark_Applications', Trademark_ApplicationSchema);

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const RecipientSchema = require('./Recipient');
+const SenderSchema = require('./Sender');
 
 const Buy_Sell_AgreementSchema = new Schema({
     parvalue: String,
@@ -12,7 +14,11 @@ const Buy_Sell_AgreementSchema = new Schema({
     divorce: String,
     companyshares: String,
     interest: String,
-    spouseinstallments: String
+    spouseinstallments: String,
+    validated: { type: Boolean, default: false },
+    pending: { type: Boolean, default: true },
+    sender: SenderSchema,
+    recipients: [RecipientSchema],
 });
 
 mongoose.model('Buy_Sell_Agreements', Buy_Sell_AgreementSchema);
