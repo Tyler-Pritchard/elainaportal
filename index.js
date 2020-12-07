@@ -4,7 +4,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
-const models = require('./models');
+require('./models/User');
+require('./models/Document');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
@@ -41,32 +42,13 @@ app.use(passport.session());
 // });
 
 require('./routes/authRoutes')(app);
-require('./routes');
-// require('./routes/billingRoutes')(app);
-// require('./routes/router');
+require('./routes/billingRoutes')(app);
+require('./routes/documentRoutes')(app);
+require('./routes/router');
 
 // pass the authenticaion checker middleware
-// const authCheckMiddleware = require('./middleware/requireLogin');
-
-// app.use('/api', authCheckMiddleware);
-
-// global.__basedir = __dirname;
-
-// var routes = require('./routes/router');
-// app.use(routes);
-
-// var auth = require('./routes/authRoutes');
-// var billing = require('./routes/billingRoutes');
-// app.use(auth);
-// app.use(billing);
-
-// app.use(express.static(__dirname + '/dashboard'));
-
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
+const authCheckMiddleware = require('./middleware/requireLogin');
+app.use('/api', authCheckMiddleware);
 
 if (process.env.NODE_ENV === 'production') {
   //invalid prod command due to directory structure -- Fix in Heroku -TRP

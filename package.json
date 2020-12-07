@@ -38,8 +38,10 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
+    "path-parser": "^6.1.0",
     "request": "^2.88.0",
     "save-as": "^0.1.8",
+    "sendgrid": "^5.2.3",
     "stripe": "^7.9.1",
     "textract": "^2.5.0",
     "uuid": "^3.3.2"
