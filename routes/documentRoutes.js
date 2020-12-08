@@ -4,6 +4,7 @@ const { URL } = require('url');
 const mongoose = require('mongoose');
 const requireLogin = require('../middleware/requireLogin');
 const Mailer = require('../services/Mailer');
+//ROUTED TO BUY_SELL_AGREEMENT FOR TESTING PURPOSES --TRP
 const documentTemplate = require('../services/documentTemplates/Buy_Sell_Agreement');
 
 const Document = mongoose.model('documents');
@@ -65,7 +66,7 @@ module.exports = app => {
       dateSent: Date.now()
     });
 
-    // Great place to send an email!
+    // Send forms
     const mailer = new Mailer(document, documentTemplate(document));
 
     try {
