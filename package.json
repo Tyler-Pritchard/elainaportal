@@ -1,0 +1,66 @@
+{
+  "name": "elaina-portal",
+  "version": "1.0.1",
+  "description": "Node App",
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/storage": "^5.5.0",
+    "@sendgrid/mail": "^6.4.0",
+    "aws-sdk": "^2.545.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "bootstrap-node": "^1.0.0",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "dialogflow": "^4.0.3",
+    "docx-pdf": "0.0.1",
+    "dotenv": "^8.2.0",
+    "errorhandler": "^1.5.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "formidable": "^1.2.1",
+    "html-docx-js": "^0.3.1",
+    "html-pdf": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "libreoffice-convert": "^1.0.5",
+    "localtunnel": "^2.0.0",
+    "lodash": "^4.17.15",
+    "lodash.merge": "^4.6.2",
+    "marked": "^1.2.4",
+    "memorystore": "^1.6.4",
+    "moment": "^2.24.0",
+    "mongodb": "^3.3.0",
+    "mongoose": "^5.6.9",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "office-to-pdf": "^4.0.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
+    "path-parser": "^6.1.0",
+    "request": "^2.88.0",
+    "save-as": "^0.1.8",
+    "sendgrid": "^5.2.3",
+    "stripe": "^7.9.1",
+    "textract": "^2.5.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "engines": {
+    "node": "14.15.1",
+    "npm": "6.14.8"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerpritchard/elainaportal.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
