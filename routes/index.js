@@ -1,3 +1,4 @@
-require('./authRoutes');
-require('./billingRoutes');
-require('./router');
+require("./authRoutes");
+require("./billingRoutes");
+require("./webhookRoutes");
+require("./router");

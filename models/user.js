@@ -2,51 +2,51 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  accessCode: {
-    type: String,
-    required: false
-  },
-  googleId: {
-    type: String
-  },
-  username: {
-    type: String,
-    required: false
-  },
-  email: {
-    type: String,
-    required: false
-  },
-  password: {
-    type: String,
-    required: false
-  },
-  companyName: {
-    type: String,
-    required: false
-  },
-  sessionPath: {
-    type: String
-  },
-  subscriptionType: {
-    type: String
-  },
-  status: {
-    type: String
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now()
-  },
-  role: {
-    type: String,
-    enum: ['admin', 'customer'],
-    default: 'customer'
-  },
-  TOA: [String],
+    accessCode: {
+        type: String,
+        required: false,
+    },
+    googleId: {
+        type: String,
+    },
+    username: {
+        type: String,
+        required: false,
+    },
+    email: {
+        type: String,
+        required: false,
+    },
+    password: {
+        type: String,
+        required: false,
+    },
+    companyName: {
+        type: String,
+        required: false,
+    },
+    sessionPath: {
+        type: String,
+    },
+    subscriptionType: {
+        type: String,
+    },
+    status: {
+        type: String,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now(),
+    },
+    role: {
+        type: String,
+        enum: ["admin", "customer"],
+        default: "customer",
+    },
+    TOA: [String],
 });
 
-mongoose.model('users', userSchema);
+mongoose.model("users", userSchema);
 
 // ***LEGACY***
 
